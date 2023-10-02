@@ -1,0 +1,102 @@
+.header-div{
+    width: 100%;
+    display: flex;
+    background-color: white;
+    box-shadow: 0 0 5px gray;
+    position: fixed;
+    margin-top: -150px;
+    background-image: url('../../assets/images/fondo-header.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+   .div-centrado{
+    display: flex;
+    height: 150px;
+    overflow: hidden;
+
+        div img{
+            width: 350px;
+            margin-top: -65px;
+            overflow: hidden;
+        }
+
+        .contenedor-menu{ 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .menu{
+                display: flex;
+                //flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-end;
+                padding-right: 3rem;     
+            
+                ul{
+                    display: flex;
+                    list-style: none;
+                    height: 1.5rem;
+                    margin-bottom:2rem;
+
+                    div{
+
+                        display: flex;     
+                        align-items: center;               
+                        margin-right: 1rem;
+                        padding: 0.8rem;
+                        box-sizing: border-box;
+                        transition: all 0.1s;
+
+                        span{
+                            display: flex;
+                            flex-direction: column;
+                            font-size: 0.5rem;
+                            justify-content: center;
+                        }
+        
+                        li{
+                            font-size: 14px;
+                            margin-right: 0.3rem;
+                        }
+
+                        &:hover{
+                            border-bottom: 1px solid darkgray;
+                            box-shadow: 0 4px gray;
+                            cursor: pointer;
+                        }
+
+                    }
+
+                    input{
+                        margin-left: 1rem;
+                        border: none;
+                        border-bottom: 1px solid lightgray;
+                    }
+
+                }
+            }
+
+            .redes{
+                display: flex;
+                width: 100%;
+                justify-content: flex-end;
+                padding-right: 3rem;    
+                margin-top: 100px;
+
+                .social-ico{
+                    width: 30px;
+                    height: 30px;
+                    margin-bottom:1.75rem;
+                }
+            
+                .wsIco{                    
+                    margin-right: 2rem;
+                    margin-left: 0.5rem;
+                }
+            }
+
+        }
+
+   }
+
+}

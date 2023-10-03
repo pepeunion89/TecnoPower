@@ -4,7 +4,7 @@
     background-color: white;
     box-shadow: 0 0 5px gray;
     position: fixed;
-    background-image: url('../../assets/images/fondo-header.png');
+    background-image: url('../../../assets/images/fondo-header.png');
     background-size: cover;
     background-repeat: no-repeat;
     margin-top: -150px;
@@ -79,18 +79,20 @@
         margin-top: 0.2rem;
 
         div{
-
-            display: flex;     
-            align-items: center;               
+            display: flex;
+            align-items: center;
             margin-right: 1rem;
             padding: 0.8rem;
             box-sizing: border-box;
             transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+            -moz-transition: all 0.1s;
+            -ms-transition: all 0.1s;
+            -o-transition: all 0.1s;
 
-            li{
                 font-size: 14px;
                 margin-right: 0.3rem;
-            }
+            
 
             &:hover{
                 border-bottom: 1px solid lightblue;

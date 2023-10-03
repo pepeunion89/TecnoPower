@@ -1,0 +1,8 @@
+<div class="contenedor-container py-5">
+    <div class="tarjetas" *ngFor="let product of products_list">
+        <img src="{{product.img}}" alt="">
+        <p class="product-name">{{product.product_name}}</p>
+        <p class="product-price">${{product.price | numberFormat}}</p>
+        <button><img src="../../assets/images/carrito.png" alt="">Agregar al carrito</button>
+    </div>    
+</div>

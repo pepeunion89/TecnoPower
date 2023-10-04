@@ -4,6 +4,7 @@
     max-width: 1100px;
     margin-top: 150px;
     justify-content: center;
+    padding-top: 100px;
         
     .tarjetas{
         display: flex;
@@ -27,9 +28,11 @@
 
         .product-name{
             width: 90%;
+            max-height: 48px;
             margin: 0 auto 1rem;
             text-align: center;
             margin-bottom: auto;
+            overflow: hidden;
         }
 
         .product-price{

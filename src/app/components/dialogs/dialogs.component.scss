@@ -1,0 +1,45 @@
+.container-dialogs{
+    width: 400px;
+    height: 450px;
+    padding: 2rem;
+
+    .container-img{
+        display: flex;
+        justify-content: center;
+
+        img{
+            height: 220px;
+        }
+
+    }
+
+    h1{
+        text-align: center;
+        color: rgb(93, 158, 180);
+    }
+
+    h2{
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .descripcion{
+        text-align: center;
+        font-size: 12px;
+        max-height: 48px;
+        overflow-y: scroll;
+    }
+
+}
+
+.buy-button{
+    display: flex;
+    width: 400px;
+    height: 50px;
+
+    button{
+        width: 100%;
+        height: 100%;
+    }
+
+}

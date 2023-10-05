@@ -1,5 +1,5 @@
 <div class="contenedor-container">
-    <div class="tarjetas" *ngFor="let product of products_list">
+    <div class="tarjetas" *ngFor="let product of products_list" (click)=openDialog(product)>
         <img src="{{product.img}}" alt="">
         <p class="product-name">{{product.product_name}}</p>
         <p class="product-price">${{product.price | numberFormat}}</p>

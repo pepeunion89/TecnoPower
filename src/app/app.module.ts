@@ -10,6 +10,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NumberFormatPipe } from './NumberFormatPipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogsComponent } from './components/dialogs/dialogs.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ContainerComponent,
     HeaderComponent,
     FooterComponent,
-    NumberFormatPipe
+    NumberFormatPipe,
+    DialogsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
+    MatDialogModule,
     BrowserAnimationsModule
   ],
   providers: [],

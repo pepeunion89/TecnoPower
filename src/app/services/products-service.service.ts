@@ -11,5 +11,19 @@ export class ProductsServiceService {
     return PRODUCTS;
   }
 
+  getProductsFiltered(categoryId: number): Products[] {
+
+    let products_filtered: Products[] = [];
+
+    for(let product of PRODUCTS){
+      if(product.category_id===categoryId){
+        products_filtered.push(product);
+      }
+    }
+
+    return products_filtered;
+  }
+
+
   constructor() { }
 }

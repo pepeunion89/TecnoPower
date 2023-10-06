@@ -12,16 +12,19 @@ import { NumberFormatPipe } from './NumberFormatPipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogsComponent } from './components/dialogs/dialogs.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { CategoryViewComponent } from './components/category-view/category-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    HeaderComponent,
     ContainerComponent,
     HeaderComponent,
     FooterComponent,
     NumberFormatPipe,
-    DialogsComponent
+    DialogsComponent,
+    CategoryViewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,27 +1,35 @@
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Products } from 'src/app/models/products';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogsComponent } from '../dialogs/dialogs.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-container',
-  templateUrl: './container.component.html',
-  styleUrls: ['./container.component.scss']
+  selector: 'app-category-view',
+  templateUrl: './category-view.component.html',
+  styleUrls: ['./category-view.component.scss']
 })
-export class ContainerComponent {
+export class CategoryViewComponent {
 
   products_list: Products[]=[];
+  categoryNameAndId: string = "";
 
   constructor(private products_service: ProductsServiceService,
-    private dialog: MatDialog){
+              private dialog: MatDialog,
+              private route: ActivatedRoute){
 
   }
 
   ngOnInit(){
+    
+    this.route.params.subscribe(params => {
+      this.categoryNameAndId = params['category'].split("-",2);
+    });
 
-    this.products_list = this.products_service.getProducts();
+    this.products_list = this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1]));
 
+    
   }
 
   openDialog(product: Products) {

@@ -1,11 +1,18 @@
-<div class="container-dialogs">
-    <div class="container-img">
-        <img src="{{data.img}}" alt="">
+<div class="container-general">    
+    <div class="first-container">
+        <div class="container-first-dialogs">
+            <div class="container-img">
+                <img src="{{data.img}}" alt="">
+            </div>
+            <h2>{{data.product_name}}</h2>
+            <p class="descripcion">{{data.description}}<p>            
+        </div>
+        <p class="pasar-a-pago" (click)="irAPago()">COMPRAR</p>
+    </div>  
+    <div class="second-container">
+        <h1>${{data.price | numberFormat}}</h1>
+        <div class="buy-button">
+            <button>IR A PAGAR</button>
+        </div>   
     </div>
-    <h1>${{data.price | numberFormat}}</h1>
-    <h2>{{data.product_name}}</h2>
-    <p class="descripcion">{{data.description}}<p>
-</div>
-<div class="buy-button">
-    <button>COMPRAR</button>
 </div>

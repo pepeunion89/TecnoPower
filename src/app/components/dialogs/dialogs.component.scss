@@ -1,45 +1,99 @@
-.container-dialogs{
-    width: 400px;
-    height: 450px;
-    padding: 2rem;
+.container-general{
+    max-width: 400px;
+    max-height: 450px;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    
 
-    .container-img{
-        display: flex;
-        justify-content: center;
+    .first-container{
+        max-width: 400px;
+        min-height: 450px;
 
-        img{
-            height: 220px;
+        .container-first-dialogs{
+            width: 100%;
+            padding: 2rem 2rem 0 2rem;
+            min-height: 400px;
+        
+            .container-img{
+                display: flex;
+                justify-content: center;
+        
+                img{
+                    height: 220px;
+                }
+        
+            }
+        
+            h1{
+                text-align: center;
+                color: rgb(93, 158, 180);
+            }
+        
+            h2{
+                text-align: center;
+                font-weight: bold;
+            }
+        
+            .descripcion{
+                text-align: center;
+                font-size: 12px;
+                max-height: 48px;
+                overflow-y: scroll;
+            }
+
+            
         }
 
+        .pasar-a-pago {
+            text-align: center;
+            line-height: 50px;
+            background: linear-gradient(to right, #3A4B5E, #add8e6);
+            background-size: 200% 100%;
+            animation: gradientAnimation 2s linear infinite alternate;
+            color: #fff;
+            //padding: 10px 20px;
+            //border-radius: 5px;
+            cursor: pointer;
+            -webkit-animation: gradientAnimation 2s linear infinite alternate;
+                    
+        }       
+          
+          @keyframes gradientAnimation {
+            0% {
+              background-position: 0% 50%;
+            }
+            100% {
+              background-position: 100% 50%;
+            }
+          }
+
+        
     }
 
-    h1{
-        text-align: center;
-        color: rgb(93, 158, 180);
+    .second-container{
+
+        width: 400px;
+        min-height: 450px;
+        display: none;
+
+        .buy-button{
+            display: flex;
+            width: 400px;
+            height: 50px;
+        
+            button{
+                width: 400px;
+                height: 100%;
+            }
+        
+        }
+
+       
     }
 
-    h2{
-        text-align: center;
-        font-weight: bold;
-    }
+    
 
-    .descripcion{
-        text-align: center;
-        font-size: 12px;
-        max-height: 48px;
-        overflow-y: scroll;
-    }
-
-}
-
-.buy-button{
-    display: flex;
-    width: 400px;
-    height: 50px;
-
-    button{
-        width: 100%;
-        height: 100%;
-    }
 
 }

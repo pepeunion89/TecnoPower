@@ -28,6 +28,7 @@ export class ContainerComponent {
     let dialogRef: MatDialogRef<DialogsComponent>;
     let data : Products = product;
     dialogRef = this.dialog.open(DialogsComponent, { data, panelClass: 'custom-dialog-container'});
+
     return dialogRef.afterClosed();
   }
 

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/tecno-compro",
+    "public": "dist/TecnoPower",
     "ignore": [
       "firebase.json",
       "**/.*",

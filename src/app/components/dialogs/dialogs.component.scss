@@ -36,7 +36,7 @@
                 font-weight: bold;
             }
         
-            .descripcion{
+            .description{
                 text-align: center;
                 font-size: 12px;
                 max-height: 48px;
@@ -46,7 +46,7 @@
             
         }
 
-        .pasar-a-pago {
+        .go-to-payment {
             text-align: center;
             line-height: 50px;
             background: linear-gradient(to right, #3A4B5E, #add8e6);
@@ -74,23 +74,94 @@
 
     .second-container{
 
+        display: none;
         width: 400px;
         min-height: 450px;
-        display: none;
+        margin-top: auto;
+
+        .payMethodTitle{
+
+            color: white;
+            text-align: center;
+            line-height: 80px;
+            padding: 0 3.6rem 0 0;
+            background: linear-gradient(to right, #3A4B5E, #add8e6);
+            background-size: 200% 100%;
+            animation: gradientAnimation 2s linear infinite alternate;
+            -webkit-animation: gradientAnimation 2s linear infinite alternate;
+            
+            span{
+
+                margin-right: 1rem;
+
+                img{
+                    width: 36px;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+
+                }
+            }
+
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+              background-position: 0% 50%;
+            }
+            100% {
+              background-position: 100% 50%;
+            }
+          }
+
+        .container-pay-method{
+            
+            padding: 0 2rem 0 2rem;
+
+            .paymentMethodAndPrice{
+
+                span{
+                    width: 100%;
+                    font-size: 12px;
+                    font-style: italic;
+                }
+                
+                .price{
+
+
+                }
+    
+                .payment-method{
+
+                    display: flex;
+                    justify-content: space-around;
+                    
+                    label{ 
+                                                
+                        input:hover{
+                        cursor: pointer;
+                        }
+                    }
+        
+                }
+    
+            }    
+            
+        }
 
         .buy-button{
             display: flex;
-            width: 400px;
+            width: 100%;
             height: 50px;
         
             button{
-                width: 400px;
+                width: 100%;
                 height: 100%;
             }
         
         }
 
-       
     }
 
     

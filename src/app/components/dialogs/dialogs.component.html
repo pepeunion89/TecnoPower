@@ -5,14 +5,39 @@
                 <img src="{{data.img}}" alt="">
             </div>
             <h2>{{data.product_name}}</h2>
-            <p class="descripcion">{{data.description}}<p>            
+            <p class="description">{{data.description}}</p>            
         </div>
-        <p class="pasar-a-pago" (click)="irAPago()">COMPRAR</p>
+        <p class="go-to-payment" (click)="goToPayment()">COMPRAR</p>
     </div>  
     <div class="second-container">
-        <h1>${{data.price | numberFormat}}</h1>
-        <div class="buy-button">
-            <button>IR A PAGAR</button>
-        </div>   
+        
+        <form (ngSubmit)="pay()">
+            <h2 class="payMethodTitle">
+              <span>
+                <img src="../../../assets/images/backbuttoncircle.png" class="backButton" alt="" (click)="backToDetails()">
+              </span>
+              ¿CÓMO PAGAS?
+            </h2>
+            <div class="container-pay-method">
+              <div class="paymentMethodAndPrice">
+                <span>Precio de lista</span>
+                <h1 id="price" class="price">${{ data.price | numberFormat }}</h1>
+                <div class="payment-method">
+                  <label>
+                    <input type="radio" [(ngModel)]="paymentMethodSelected" name="paymentMethod" value="Transferencia" checked> Transferencia
+                  </label>
+                  <label>
+                    <input type="radio" [(ngModel)]="paymentMethodSelected" name="paymentMethod" value="Efectivo"> Efectivo
+                  </label>
+                  <label>
+                    <input type="radio" [(ngModel)]="paymentMethodSelected" name="paymentMethod" value="Tarjeta"> Tarjeta
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="buy-button">
+              <button type="submit">IR A PAGAR</button>
+            </div>
+          </form>
     </div>
 </div>

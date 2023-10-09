@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogsComponent } from './components/dialogs/dialogs.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CategoryViewComponent } from './components/category-view/category-view.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CategoryViewComponent } from './components/category-view/category-view.
   ],
   imports: [
     BrowserModule,
+    FormsModule, 
     AppRoutingModule,
     FontAwesomeModule,
     MatDialogModule,

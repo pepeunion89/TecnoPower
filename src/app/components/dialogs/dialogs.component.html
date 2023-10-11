@@ -1,11 +1,15 @@
 <div class="container-general">    
     <div class="first-container">
+      <img class="exit-button" src="../../../assets/images/exit2.png" alt="" (click)="closeWindow()">
         <div class="container-first-dialogs">
-            <div class="container-img">
-                <img src="{{data.img}}" alt="">
+            <div class="container-img-title">
+              <div class="container-img">
+                <img class="product-img" src="{{data.img}}" alt="">
+              </div>
+              <h2 class="product-title">{{data.product_name}}</h2>
             </div>
-            <h2>{{data.product_name}}</h2>
-            <p class="description">{{data.description}}</p>            
+            <p class="see-details" (click)="seeDetails()">Detalles <span class="arrow"><</span></p>
+            <p id="description" class="description">{{data.description}}</p>            
         </div>
         <p class="go-to-payment" (click)="goToPayment()">COMPRAR</p>
     </div>  

@@ -14,18 +14,25 @@
         <p class="go-to-payment" (click)="goToPayment()">COMPRAR</p>
     </div>  
     <div class="second-container">
-        
-        <form (ngSubmit)="pay()">
+
+          <form (ngSubmit)="pay()">
             <h2 class="payMethodTitle">
               <span>
                 <img src="../../../assets/images/backbuttoncircle.png" class="backButton" alt="" (click)="backToDetails()">
               </span>
               ¿CÓMO PAGAS?
             </h2>
+            <div class="container-img-title-pay">
+              <img class="img-pay-scene" src="{{data.img}}" alt="">
+              <div class="container-title-price">
+                <p>{{data.product_name}}</p>
+                <span>Precio de lista</span>
+                <h2 id="price" class="price">${{ data.price | numberFormat }}</h2>
+              </div>
+                
+            </div>        
             <div class="container-pay-method">
               <div class="paymentMethodAndPrice">
-                <span>Precio de lista</span>
-                <h1 id="price" class="price">${{ data.price | numberFormat }}</h1>
                 <div class="payment-method">
                   <label>
                     <input type="radio" [(ngModel)]="paymentMethodSelected" name="paymentMethod" value="Transferencia" checked> Transferencia
@@ -39,8 +46,19 @@
                 </div>
               </div>
             </div>
-            <div class="buy-button">
-              <button type="submit">IR A PAGAR</button>
+            <div class="container-buy-button">
+              <div class="buy-button add-shopping-cart">
+                <button type="button" (click)="addToCart()">
+                  <img src="../../../assets/images/carrito.png" alt="">
+                  Agregar al carrito
+                </button>
+              </div>
+              <div class="buy-button pay">
+                <button type="submit">
+                  <img src="../../../assets/images/pay.png" alt="">
+                  Pagar
+                </button>
+              </div>
             </div>
           </form>
     </div>

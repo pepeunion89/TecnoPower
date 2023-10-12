@@ -110,6 +110,10 @@ export class DialogsComponent {
 
   }
 
+  addToCart(){
+    alert("Agregado al carrito!");
+  }
+
   pay(){
 
     this.dataForm.productName = this.data.product_name;

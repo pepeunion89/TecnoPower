@@ -126,6 +126,39 @@
         min-height: 450px;
         margin-top: auto;
 
+        .container-img-title-pay{
+            display: flex;
+            padding: 1rem 1rem 2rem 1rem;
+
+            .img-pay-scene{
+                height: 180px;
+            }
+
+           .container-title-price{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+                p{
+                    font-size: 12px;
+                    padding-left: 1rem;
+                    text-align: center;
+                    font-weight: bold;
+                    //line-height: 100px;
+                }   
+
+                span{
+                    width: 100%;
+                    font-size: 12px;
+                    font-style: italic;
+                    text-align: center;
+                }
+           }
+            
+        }
+
         .payMethodTitle{
 
             color: white;
@@ -168,11 +201,6 @@
 
             .paymentMethodAndPrice{
 
-                span{
-                    width: 100%;
-                    font-size: 12px;
-                    font-style: italic;
-                }
                 
                 
                 .payment-method{
@@ -193,16 +221,70 @@
             
         }
 
-        .buy-button{
-            display: flex;
-            width: 100%;
-            height: 50px;
-        
-            button{
-                width: 100%;
-                height: 100%;
+        .container-buy-button{
+            display: flex;       
+            margin: 0 auto; 
+            justify-content: space-around;
+            position: absolute;
+            bottom: 0.5rem;
+
+            .buy-button{
+                display: flex;
+                //width: 100%;
+                height: 50px;     
+            
+                button{
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    border-radius: 1px;
+                }           
             }
-        
+
+            .add-shopping-cart{
+                width: 232px;
+                padding-left: 0.5rem;
+
+               button{
+                transition: all 0.3s;
+
+                &:hover{
+                    background-color: lightgray;
+                }
+
+                img{
+                    width: 20px;
+                    height: auto;
+                    margin: 0px 8px 2px -8px;
+                }
+
+               }
+
+            }
+
+            .pay{
+                width: 160px;
+                padding-right:0.5rem;
+                margin-left: 0.5rem;
+            
+                button{
+                    background: linear-gradient(to right, #3A4B5E, #add8e6);
+                    background-size: 200% 100%;
+                    animation: gradientAnimation 2s linear infinite alternate;
+                    color: #fff;
+                    //padding: 10px 20px;
+                    //border-radius: 5px;
+                    -webkit-animation: gradientAnimation 2s linear infinite alternate;
+                
+                    img{
+                        width: 30px;
+                        height: auto;
+                        margin: 0px 8px 2px -32px;
+                    }
+                }    
+
+            }
+
         }
 
     }

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Products } from 'src/app/models/products';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
 import { DialogsComponent } from '../dialogs/dialogs.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ChangeDetectionStrategy } from '@angular/compiler';
 
 @Component({
   selector: 'app-category-view',
@@ -17,7 +18,8 @@ export class CategoryViewComponent {
 
   constructor(private products_service: ProductsServiceService,
               private dialog: MatDialog,
-              private route: ActivatedRoute){
+              private route: ActivatedRoute,
+              private router: Router){
 
   }
 
@@ -25,12 +27,11 @@ export class CategoryViewComponent {
     
     this.route.params.subscribe(params => {
       this.categoryNameAndId = params['category'].split("-",2);
+      this.products_list = this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1]));
     });
-
-    this.products_list = this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1]));
-
     
   }
+
 
   openDialog(product: Products) {
     let dialogRef: MatDialogRef<DialogsComponent>;
@@ -38,5 +39,14 @@ export class CategoryViewComponent {
     dialogRef = this.dialog.open(DialogsComponent, { data, panelClass: 'custom-dialog-container'});
     return dialogRef.afterClosed();
   }
+
+  goToCategorySection(category: string){
+
+    this.router.navigate(['/'+category]);
+    
+  }
+
+
+  
 
 }

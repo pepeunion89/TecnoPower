@@ -1,5 +1,28 @@
-<div class="header-category">
-    <h1>{{categoryNameAndId[0]}}</h1>
+<div class="container-banner">
+    <div class="deconstructed">
+        {{categoryNameAndId[0]}}
+        <div>{{categoryNameAndId[0]}}</div>
+        <div>{{categoryNameAndId[0]}}</div>
+        <div>{{categoryNameAndId[0]}}</div>
+        <div>{{categoryNameAndId[0]}}</div>
+    </div>
+    <div class="menu">
+        <ul>
+            <div (click)="goToCategorySection('/')">
+                <li>Menú principal</li>
+            </div>
+            <div (click)="goToCategorySection('Auriculares-1')">
+                <li>Auriculares</li>
+            </div>
+            <div (click)="goToCategorySection('Celulares-2')">
+                <li>Celulares</li>
+            </div>
+            <div (click)="goToCategorySection('Linea Stanley')">
+                <li>Línea Stanley</li>
+            </div>
+            <!-- <input type="text" placeholder="¿Qué estás buscando?">      -->          
+        </ul>
+    </div>
 </div>
 <div class="contenedor-general container">   
     <div class="contenedor-category">

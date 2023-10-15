@@ -25,7 +25,26 @@
 </div>
 <div class="contenedor-general container"> 
     <div class="filters">
-
+        <div class="search-type sort-by-price">
+            <p>Ordenar por precio:</p>
+            <div><input type="radio" name="radio-sort"> Menor a mayor</div>
+            <div><input type="radio" name="radio-sort"> Mayor a menor</div>
+        </div>
+        <div class="search-type range-price">
+            <p>Rango de precio:</p>            
+            <p class="show-range-paragraph">
+                <span class="min-range">Min:</span>
+                <span class="max-range">Máx:</span>
+            </p>
+            <mat-slider class="mat-slide-class" min="200" max="500">
+                <input id="min-range" value="300" matSliderStartThumb  (input)="updateMinRange()">
+                <input id="max-range" value="400" matSliderEndThumb  (input)="updateMaxRange()">
+            </mat-slider>          
+        </div>
+        <div class="search-type sort-by-brand">
+            <p>Marca:</p>
+            <div *ngFor="let brand of brands"><input type="checkbox"> {{brand}}</div>
+        </div>
     </div>  
     <div class="contenedor-category">
         <div class="tarjetas" *ngFor="let product of products_list" (click)=openDialog(product)>

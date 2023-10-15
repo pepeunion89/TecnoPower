@@ -14,6 +14,7 @@ import { DialogsComponent } from './components/dialogs/dialogs.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CategoryViewComponent } from './components/category-view/category-view.component';
 import { FormsModule } from '@angular/forms';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FontAwesomeModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

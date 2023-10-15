@@ -5,16 +5,32 @@ import { ProductsServiceService } from 'src/app/services/products-service.servic
 import { DialogsComponent } from '../dialogs/dialogs.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChangeDetectionStrategy } from '@angular/compiler';
+import { MatSliderModule } from '@angular/material/slider';
 
 @Component({
   selector: 'app-category-view',
   templateUrl: './category-view.component.html',
-  styleUrls: ['./category-view.component.scss']
+  styleUrls: ['./category-view.component.scss'],
 })
 export class CategoryViewComponent {
 
   products_list: Products[]=[];
   categoryNameAndId: string = "";
+  brands:any[] = [];
+
+  // RANGE SORT
+
+   updateMinRange(){
+    let min = document.getElementById('min-range')?.getAttribute('aria-valuetext');
+    document.getElementsByClassName('min-range')[0].innerHTML = "Min: $"+String(min);
+   } 
+
+   updateMaxRange(){
+    let max = document.getElementById('max-range')?.getAttribute('aria-valuetext');
+    document.getElementsByClassName('max-range')[0].innerHTML = "Máx: $"+String(max);
+  } 
+
+  // END RANGE SORT
 
   constructor(private products_service: ProductsServiceService,
               private dialog: MatDialog,
@@ -27,8 +43,9 @@ export class CategoryViewComponent {
     this.route.params.subscribe(params => {
       this.categoryNameAndId = params['category'].split("-",2);
       this.products_list = this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1]));
+      this.loadBrands();
     });
-    
+
   }
 
 
@@ -42,7 +59,21 @@ export class CategoryViewComponent {
   goToCategorySection(category: string){
 
     this.router.navigate(['/'+category]);
+    this.loadBrands();
     
+  }
+
+  loadBrands(){
+
+    this.brands = [];
+
+    for(let product of this.products_list){
+      if(!this.brands.includes(product.maker)){
+        this.brands.push(product.maker);
+        console.log(product.maker);
+      }
+    }
+
   }
 
   

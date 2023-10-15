@@ -94,17 +94,68 @@
   display: flex; 
 
     .filters{
-      min-width: 400px;
-      height: 600px;
+      min-width: 350px;
+      //height: 300px;
+      min-height: 300px;
+      max-height: 600px;
       margin-top: 2rem;
       margin-right: -6rem;
       margin-left: 4rem;
+      padding: 1rem;
       background-color: white;
       border-radius: 5px;
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       -ms-border-radius: 5px;
       -o-border-radius: 5px;
+
+      .search-type{
+        background-color: lightgray;
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+
+        p:first-of-type{
+          font-weight: bold;
+        }
+
+      }
+
+      .sort-by-price{
+
+      }
+
+      .range-price{
+
+        mat-slider {
+          width: 300px;
+        }
+
+        .show-range-paragraph{
+          display: flex;
+          justify-content: space-between;
+          padding: 0 1rem 0 1rem;
+          margin-bottom: 0;
+        }
+
+        .mat-mdc-slider{
+       //   margin: 0 auto;
+          width: 270px;
+        }
+
+
+      }
+
+      .sort-by-brand{
+        height: 240px;
+        max-height: 240px;
+        overflow-y: scroll;
+      }
+
     }
     
     .contenedor-category{

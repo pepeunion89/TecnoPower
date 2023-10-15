@@ -20,7 +20,6 @@ export class CategoryViewComponent {
               private dialog: MatDialog,
               private route: ActivatedRoute,
               private router: Router){
-
   }
 
   ngOnInit(){
@@ -46,7 +45,5 @@ export class CategoryViewComponent {
     
   }
 
-
   
-
 }

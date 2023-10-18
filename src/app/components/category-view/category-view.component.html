@@ -33,12 +33,12 @@
         <div class="search-type range-price">
             <p>Rango de precio:</p>            
             <p class="show-range-paragraph">
-                <span class="min-range">Min:</span>
-                <span class="max-range">Máx:</span>
+                <span class="min-range">Min:{{minPrice}}</span>
+                <span class="max-range">Máx:{{maxPrice}}</span>
             </p>
-            <mat-slider class="mat-slide-class" min="200" max="500">
-                <input id="min-range" value="300" matSliderStartThumb  (input)="updateMinRange()">
-                <input id="max-range" value="400" matSliderEndThumb  (input)="updateMaxRange()">
+            <mat-slider class="mat-slide-class" min="{{minPrice}}" max="{{maxPrice}}">
+                <input id="min-range" value="{{minPrice}}" matSliderStartThumb  (input)="updateMinRange()">
+                <input id="max-range" value="{{maxPrice}}" matSliderEndThumb  (input)="updateMaxRange()">
             </mat-slider>          
         </div>
         <div class="search-type sort-by-brand">

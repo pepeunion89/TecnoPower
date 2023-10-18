@@ -94,14 +94,14 @@
   display: flex; 
 
     .filters{
-      min-width: 350px;
+      width: 300px;
       //height: 300px;
       min-height: 300px;
       max-height: 600px;
       margin-top: 2rem;
-      margin-right: -6rem;
-      margin-left: 4rem;
-      padding: 1rem;
+      margin-left: auto;
+      //margin-right: -6rem;
+      padding: 0 1rem 0 1rem;
       background-color: white;
       border-radius: 5px;
       -webkit-border-radius: 5px;
@@ -144,7 +144,7 @@
 
         .mat-mdc-slider{
        //   margin: 0 auto;
-          width: 270px;
+          width: 220px;
         }
 
 
@@ -160,17 +160,18 @@
     
     .contenedor-category{
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
-        max-width: 1100px;
+        width: 50%;
         //margin-top: 150px;
         justify-content: center;
         padding-top: 2rem;
-        margin: 0 auto;
+        margin-right: auto;
             
         .tarjetas{
             display: flex;
             //flex-direction: column;
-            width: 700px;
+            flex: 1;
             height: 155px;
             background-color: white;
             border-radius: 5px;     

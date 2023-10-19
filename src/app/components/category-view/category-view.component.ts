@@ -17,6 +17,9 @@ export class CategoryViewComponent {
   products_list: Products[]=[];
   categoryNameAndId: string = "";
   brands:any[] = [];
+  prices:number[] = [];
+  minPrice: number = 0;
+  maxPrice: number = 0;
 
   // RANGE SORT
 
@@ -44,6 +47,11 @@ export class CategoryViewComponent {
       this.categoryNameAndId = params['category'].split("-",2);
       this.products_list = this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1]));
       this.loadBrands();
+      this.minAndMaxPrice();
+      this.minPrice = Math.min(...this.prices);
+      this.maxPrice = Math.max(...this.prices);
+      (document.getElementsByClassName('min-range')[0] as HTMLElement).innerHTML="Min: $"+String(this.minPrice);
+      (document.getElementsByClassName('max-range')[0] as HTMLElement).innerHTML="Máx: $"+String(this.maxPrice);
     });
 
   }
@@ -60,7 +68,11 @@ export class CategoryViewComponent {
 
     this.router.navigate(['/'+category]);
     this.loadBrands();
-    
+    this.minAndMaxPrice();
+    this.minPrice = Math.min(...this.prices);
+    this.maxPrice = Math.max(...this.prices);
+    (document.getElementsByClassName('min-range')[0] as HTMLElement).innerHTML="Min: $"+String(this.minPrice);
+    (document.getElementsByClassName('max-range')[0] as HTMLElement).innerHTML="Máx: $"+String(this.maxPrice);
   }
 
   loadBrands(){
@@ -72,6 +84,16 @@ export class CategoryViewComponent {
         this.brands.push(product.maker);
         console.log(product.maker);
       }
+    }
+
+  }
+
+  minAndMaxPrice(){
+
+    this.prices = [];
+
+    for(let product of this.products_list){
+      this.prices.push(product.price);
     }
 
   }

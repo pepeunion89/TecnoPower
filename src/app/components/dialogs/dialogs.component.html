@@ -11,7 +11,7 @@
             <p class="see-details" (click)="seeDetails()">Detalles <span class="arrow"><</span></p>
             <p id="description" class="description">{{data.description}}</p>            
         </div>
-        <p class="go-to-payment" (click)="goToPayment()">COMPRAR</p>
+        <p class="go-to-payment" (click)="goToPayment()">¡LO QUIERO!</p>
     </div>  
     <div class="second-container">
 
@@ -48,7 +48,7 @@
             </div>
             <div class="container-buy-button">
               <div class="buy-button add-shopping-cart">
-                <button type="button" (click)="addToCart()">
+                <button type="button" (click)="addToCart(data)">
                   <img src="../../../assets/images/carrito.png" alt="">
                   Agregar al carrito
                 </button>

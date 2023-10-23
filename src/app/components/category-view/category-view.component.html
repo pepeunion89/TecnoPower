@@ -7,7 +7,7 @@
     </div>
     <div class="menu">
         <ul>
-            <div (click)="goToCategorySection('/')">
+            <div (click)="goHome()">
                 <li>Menú principal</li>
             </div>
             <div (click)="goToCategorySection('Auriculares-1')">
@@ -19,8 +19,14 @@
             <div (click)="goToCategorySection('Linea Stanley')">
                 <li>Línea Stanley</li>
             </div>
+            <div (click)="goToCart()">
+                <li class="cartIcoContainer">
+                    <img class="cartIco" src="../../../assets/images/carritoIco.png" alt="">
+                </li>
+            </div>
             <!-- <input type="text" placeholder="¿Qué estás buscando?">      -->          
         </ul>
+        <div class="cartCircleQuantity">12</div>
     </div>
 </div>
 <div class="contenedor-general container"> 
@@ -52,7 +58,7 @@
             <div class="container-title-price-button">
                 <p class="product-name">{{product.product_name}}</p>
                 <p class="product-price">${{product.price | numberFormat}}</p>
-                <button><img src="../../assets/images/carrito.png" alt="">Agregar al carrito</button>
+                <button><img src="../../assets/images/carrito.png" alt="">Comprar</button>
             </div>
         </div>    
     </div>

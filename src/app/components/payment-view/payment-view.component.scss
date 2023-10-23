@@ -1,0 +1,153 @@
+.container-banner{
+
+    display: flex;
+    width: 100%;
+    background-color: white;
+    background-image: url("../../../assets/images/fondo-header.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    //align-items: center;
+    justify-content: flex-end;
+    margin: 0;
+    overflow: hidden;
+    height: 235px;    
+  
+  
+    .centered-banner{
+  
+      .background-banner{
+      
+  
+        img{
+          margin-left: 5rem;
+        }
+  
+        h2{
+          width: 100%;
+          margin-top: -180px;
+          font-size: 5rem;
+          text-align: center;
+          color: gray;
+        }
+  
+    }
+  
+    }
+  
+    .menu{
+      display: flex;
+      width: 100%;
+      min-height: 3rem;
+      color: white;
+      //flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding-right: 3rem;   
+      background-color: black;
+      //border-top: 3px solid white;
+      border-bottom: 3px solid white;
+  
+          ul{
+              display: flex;
+              list-style: none;
+              height: 1.5rem;
+              margin-bottom: 0.45rem;
+              margin-top: 0.2rem;
+      
+              div{
+                  display: flex;
+                  align-items: center;
+                  margin-right: 1rem;
+                  padding: 0.8rem;
+                  box-sizing: border-box;
+                  transition: all 0.1s;
+                  -webkit-transition: all 0.1s;
+                  -moz-transition: all 0.1s;
+                  -ms-transition: all 0.1s;
+                  -o-transition: all 0.1s;
+      
+                      font-size: 14px;
+                      margin-right: 0.3rem;
+                  
+      
+                  &:hover{
+                      border-bottom: 1px solid lightblue;
+                      box-shadow: 0 4px lightblue;
+                      cursor: pointer;
+                  }      
+              }
+              
+
+          }
+    }
+  
+    
+  }
+  
+  
+  
+  .contenedor-general{   
+    min-height: 500px;
+
+    .cartTitle{
+      padding: 1rem;
+      font-size: 2rem;
+      padding-bottom: 0;
+
+    }
+      
+    .productAdded{
+      display: flex;
+      width: 90%;
+      margin: 0 auto;
+      border: none;
+      border-left: 12px solid lightblue;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+      background-color: white;
+      padding: 1rem;
+      margin-top: 1rem;
+      box-shadow: 0px 1px 0px darkgray ;
+      
+      
+      img{
+        margin-left: 1rem;
+        height: 90px;
+      }
+
+      h3{
+        font-size: 1rem;
+        line-height: 90px;
+        margin-left: 1rem;
+      }
+
+      .quantityAndPrice{
+        display: flex;
+        width: 30%;
+        margin-left: auto;
+        justify-content: center;
+        align-items: center;
+
+        .quantity{
+          width: 50%;
+        }
+
+        .price{
+          font-size: 1.5rem;
+          width: 50%;
+          padding-left: 1rem;
+        }
+
+      }
+
+    }      
+      
+  }  
+    
+
+    
+  

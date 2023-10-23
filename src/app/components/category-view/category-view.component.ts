@@ -6,6 +6,7 @@ import { DialogsComponent } from '../dialogs/dialogs.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChangeDetectionStrategy } from '@angular/compiler';
 import { MatSliderModule } from '@angular/material/slider';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-category-view',
@@ -20,6 +21,7 @@ export class CategoryViewComponent {
   prices:number[] = [];
   minPrice: number = 0;
   maxPrice: number = 0;
+  cartList: any[] = [];
 
   // RANGE SORT
 
@@ -38,7 +40,8 @@ export class CategoryViewComponent {
   constructor(private products_service: ProductsServiceService,
               private dialog: MatDialog,
               private route: ActivatedRoute,
-              private router: Router){
+              private router: Router,
+              private cartService: CartService){
   }
 
   ngOnInit(){
@@ -53,6 +56,13 @@ export class CategoryViewComponent {
       (document.getElementsByClassName('min-range')[0] as HTMLElement).innerHTML="Min: $"+String(this.minPrice);
       (document.getElementsByClassName('max-range')[0] as HTMLElement).innerHTML="Máx: $"+String(this.maxPrice);
     });
+
+
+    let cartCircleQuantity = document.getElementsByClassName('cartCircleQuantity')[0] as HTMLElement;
+    
+    this.cartList = this.cartService.getCartList();
+
+    cartCircleQuantity.innerHTML=(String(this.cartList.length));
 
   }
 
@@ -73,6 +83,18 @@ export class CategoryViewComponent {
     this.maxPrice = Math.max(...this.prices);
     (document.getElementsByClassName('min-range')[0] as HTMLElement).innerHTML="Min: $"+String(this.minPrice);
     (document.getElementsByClassName('max-range')[0] as HTMLElement).innerHTML="Máx: $"+String(this.maxPrice);
+  }
+
+  goHome(){
+
+    this.router.navigate(['']);
+
+  }
+
+  goToCart(){
+
+    this.router.navigate(['/Checkout']);
+
   }
 
   loadBrands(){

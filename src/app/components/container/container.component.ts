@@ -3,6 +3,7 @@ import { Products } from 'src/app/models/products';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogsComponent } from '../dialogs/dialogs.component';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-container',
@@ -14,7 +15,7 @@ export class ContainerComponent {
   products_list: Products[]=[];
 
   constructor(private products_service: ProductsServiceService,
-    private dialog: MatDialog){
+              private dialog: MatDialog){
 
   }
 

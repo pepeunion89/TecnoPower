@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { Products } from 'src/app/models/products';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-dialogs',
@@ -11,7 +12,8 @@ import { Products } from 'src/app/models/products';
 export class DialogsComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Products,
-                      public dialogRef: MatDialogRef<DialogsComponent>) {}
+                      public dialogRef: MatDialogRef<DialogsComponent>,
+                      private cartService: CartService) {}
 
   dataForm: any={
 
@@ -110,8 +112,9 @@ export class DialogsComponent {
 
   }
 
-  addToCart(){
-    alert("Agregado al carrito!");
+  addToCart(data:any){
+    this.cartService.addToCart(data);
+    this.closeWindow();
   }
 
   pay(){

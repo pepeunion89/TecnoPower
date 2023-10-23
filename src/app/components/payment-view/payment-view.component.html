@@ -1,0 +1,43 @@
+<div class="container-banner">
+    <div class="container centered-banner">
+        <div class="background-banner">
+            <img src="../../assets/images/logo.png" alt="logoTecnoPower">
+            <h2 class='lineUp'>TU PEDIDO</h2>
+        </div>        
+    </div>
+    <div class="menu">
+        <ul>
+            <div (click)="goHome()">
+                <li>Menú principal</li>
+            </div>
+            <div (click)="goToCategorySection('Auriculares-1')">
+                <li>Auriculares</li>
+            </div>
+            <div (click)="goToCategorySection('Celulares-2')">
+                <li>Celulares</li>
+            </div>
+            <div (click)="goToCategorySection('Linea Stanley')">
+                <li>Línea Stanley</li>
+            </div>
+            <!-- <input type="text" placeholder="¿Qué estás buscando?">      -->          
+        </ul>
+    </div>
+</div>
+<div class="contenedor-general container">
+    <div class="cartTitle">
+        <p>Carrito de compras</p>
+    </div> 
+    <div class="productAdded" *ngFor="let item of loadedCart">
+        <img src="{{item.img}}" alt="">
+        <h3>{{item.product_name}}</h3>
+        <div class="quantityAndPrice">
+            <div class="quantity">
+                <p>1</p>
+            </div>
+            <div class="price">
+                <p>${{item.price | numberFormat}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

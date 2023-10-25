@@ -20,6 +20,9 @@
 <div class="menu-header">
     <div class="menu">
         <ul>
+            <div (click)="goHome()">
+                <li>Menú principal</li>
+            </div>
             <div (click)="goToCategorySection('Auriculares-1')">
                 <li>Auriculares</li>
             </div>
@@ -36,6 +39,6 @@
             </div>
             <!-- <input type="text" placeholder="¿Qué estás buscando?">      -->          
         </ul>
-        <div class="cartCircleQuantity">12</div>
+        <div class="cartCircleQuantity">{{cartList.length}}</div>
     </div>
 </div>

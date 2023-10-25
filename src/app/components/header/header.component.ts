@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -12,19 +12,23 @@ export class HeaderComponent {
   cartList: any[] = [];
 
   constructor(private router: Router,
-              private cartService: CartService){
+              private cartService: CartService,
+              private cdr: ChangeDetectorRef){
 
   }
 
   ngOnInit(){
+    this.cdr.detectChanges();
     let cartCircleQuantity = document.getElementsByClassName('cartCircleQuantity')[0] as HTMLElement;
     
     this.cartList = this.cartService.getCartList();
 
     cartCircleQuantity.innerHTML=(String(this.cartList.length));
+
   }
 
   ngOnChanges(){
+    this.cdr.detectChanges();
     let cartCircleQuantity = document.getElementsByClassName('cartCircleQuantity')[0] as HTMLElement;
     
     this.cartList = this.cartService.getCartList();
@@ -38,6 +42,12 @@ export class HeaderComponent {
 
     this.router.navigate(['/'+category]);
     
+  }
+
+  goHome(){
+
+    this.router.navigate(['']);
+
   }
 
   goToCart(){

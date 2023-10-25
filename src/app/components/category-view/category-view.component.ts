@@ -41,10 +41,13 @@ export class CategoryViewComponent {
               private dialog: MatDialog,
               private route: ActivatedRoute,
               private router: Router,
-              private cartService: CartService){
+              private cartService: CartService,
+              private cdr: ChangeDetectorRef){
   }
 
   ngOnInit(){
+
+    this.cdr.detectChanges();
     
     this.route.params.subscribe(params => {
       this.categoryNameAndId = params['category'].split("-",2);
@@ -64,6 +67,16 @@ export class CategoryViewComponent {
 
     cartCircleQuantity.innerHTML=(String(this.cartList.length));
 
+  }
+
+  ngOnChanges(){
+    this.cdr.detectChanges();
+
+    let cartCircleQuantity = document.getElementsByClassName('cartCircleQuantity')[0] as HTMLElement;
+    
+    this.cartList = this.cartService.getCartList();
+
+    cartCircleQuantity.innerHTML=(String(this.cartList.length));
   }
 
 

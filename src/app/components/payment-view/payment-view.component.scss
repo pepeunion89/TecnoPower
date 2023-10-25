@@ -75,10 +75,36 @@
                       border-bottom: 1px solid lightblue;
                       box-shadow: 0 4px lightblue;
                       cursor: pointer;
-                  }      
+                  }   
+                  
+                  .cartIcoContainer{
+
+                    .cartIco{
+                        width: 25px;
+                    }
+                }   
               }
               
 
+          }
+
+          .cartCircleQuantity{
+            position: absolute;
+            display: flex;
+            height: 20px;
+            width: 22px;
+            margin-bottom: 21px;
+            margin-left: 476px;
+            font-size: 12px;
+            line-height: 12px;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(58, 75, 94);
+            border-radius: 999px;
+            -webkit-border-radius: 999px;
+            -moz-border-radius: 999px;
+            -ms-border-radius: 999px;
+            -o-border-radius: 999px;
           }
     }
   

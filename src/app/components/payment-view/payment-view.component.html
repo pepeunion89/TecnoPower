@@ -34,7 +34,9 @@
         <p>Carrito de compras</p>
     </div> 
     <div class="productAdded" *ngFor="let item of loadedCart">
-        <img src="{{item.img}}" alt="">
+        <div class="imgContainer">
+            <img src="{{item.img}}" alt="">
+        </div>
         <h3>{{item.product_name}}</h3>
         <div class="quantityAndPrice">
             <div class="quantity">
@@ -44,6 +46,10 @@
                 <p>${{item.price | numberFormat}}</p>
             </div>
         </div>
+    </div>
+    <div class="productAdded total">
+        <div>Total:</div>
+        <div>$ {{total | numberFormat}}</div>
     </div>
 </div>
 <app-footer></app-footer>

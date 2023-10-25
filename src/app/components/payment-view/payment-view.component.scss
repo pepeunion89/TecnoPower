@@ -140,9 +140,16 @@
       box-shadow: 0px 1px 0px darkgray ;
       
       
-      img{
+      .imgContainer{
         margin-left: 1rem;
+        width: 90px;
         height: 90px;
+        text-align: center;
+
+        img{
+          height: 100%;
+        }
+
       }
 
       h3{
@@ -171,6 +178,12 @@
       }
 
     }      
+
+    .total{
+      justify-content: space-between;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
       
   }  
     

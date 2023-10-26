@@ -40,7 +40,9 @@
         <h3>{{item.product_name}}</h3>
         <div class="quantityAndPrice">
             <div class="quantity">
-                <p>1</p>
+                <div class="quantityLess quantityLess-{{item.id_product}}" (click)="deacreaseQuantity('quantityNumber-'+item.id_product)">_</div>
+                <div class="quantityNumber quantityNumber-{{item.id_product}}"><p>1</p></div>
+                <div class="quantityPlus quantityPlus-{{item.id_product}}" (click)="increaseQuantity('quantityNumber-'+item.id_product)">+</div>
             </div>
             <div class="price">
                 <p>${{item.price | numberFormat}}</p>
@@ -48,8 +50,31 @@
         </div>
     </div>
     <div class="productAdded total">
-        <div>Total:</div>
-        <div>$ {{total | numberFormat}}</div>
+        <div class="payMethodSelect">
+            <div class="containerTextPayMethod">
+                <p>COMO</p>
+                <p>PAGAS</p>
+            </div>
+            <div class="containerPayMethod">
+                  <label>
+                    <input type="radio" [(ngModel)]="paymentMethodSelected" name="paymentMethod" value="Transferencia" checked> Transferencia
+                  </label>
+                  <label>
+                    <input type="radio" [(ngModel)]="paymentMethodSelected" name="paymentMethod" value="Efectivo"> Efectivo <span>(15% descuento)</span>
+                  </label>
+                  <label>
+                    <input type="radio" [(ngModel)]="paymentMethodSelected" name="paymentMethod" value="Tarjeta"> Tarjeta <span>(3 sin interés)</span>
+                </label>
+            </div>
+        </div>
+        <div class="totalDiv">
+            Total: $ <span>{{total | numberFormat}}</span>
+        </div>
+    </div>
+    <div class="payButtonContainer">
+        <button class="payButton">
+            COMPRAR
+        </button>
     </div>
 </div>
 <app-footer></app-footer>

@@ -160,19 +160,66 @@
 
       .quantityAndPrice{
         display: flex;
-        width: 30%;
+        width: 40%;
         margin-left: auto;
         justify-content: center;
         align-items: center;
 
         .quantity{
-          width: 50%;
+          display: flex;
+          width: 60%;
+          height: 40px;
+          margin-right: 1rem;
+
+          div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #7a7a7a;
+            border: 1px solid hsla(0,0%,86.7%,.34901960784313724);
+            width: 60px;
+            transition: all 0.3s;
+          }
+
+          .quantityPlus{
+            border-radius: 4px 0 0 4px;
+            font-size: 2rem;
+          }
+
+          .quantityLess{
+            border-radius: 0 4px 4px 0;
+            font-size: 2rem;
+            padding-bottom: 22px;
+          }
+
+          .quantityLess:hover, .quantityPlus:hover{
+            cursor: pointer;
+            color: rgb(54, 54, 54);
+          }
+
+          .quantityNumber{
+            font-size: 1.2rem;
+            line-height: 40px;
+            border: none;
+            border-top: 1px solid hsla(0,0%,86.7%,.34901960784313724);
+            border-bottom: 1px solid hsla(0,0%,86.7%,.34901960784313724);
+
+            p{
+              margin: 0;
+            }
+
+          }
+
         }
 
         .price{
           font-size: 1.5rem;
           width: 50%;
-          padding-left: 1rem;
+
+          p{
+            margin: 0;
+          }
+
         }
 
       }
@@ -182,7 +229,106 @@
     .total{
       justify-content: space-between;
       font-size: 2rem;
+      margin-bottom: 1rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+
+      .payMethodSelect{
+
+        display: flex;
+        font-size: 1rem;
+        justify-content: center;
+        align-items: center;
+
+       .containerTextPayMethod{
+
+        p{
+          margin: 0px;
+          font-weight: bold;
+        }
+
+        p:first-of-type{
+          font-size: 2.24rem;
+          line-height: 2rem;
+          color: rgb(58, 75, 94);
+          //text-shadow: 1px 1px 1px black;
+        }
+
+        p:last-of-type{
+          font-size: 2rem;
+          line-height: 2rem;
+          color: white;
+          background-color: rgb(58, 75, 94);
+          //text-shadow: 1px 1px 1px black;
+        }
+
+       }
+
+        .containerPayMethod {
+          display: flex;
+          flex-direction: column;
+          margin-left: 1rem;
+          
+          label{
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
+
+              span{
+
+                color: green;
+                font-weight: bold;
+                font-size: 0.8rem;
+
+              }
+
+          }
+
+        }
+
+      }
+
+      .totalDiv{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+
+    }
+
+    .payButtonContainer{
+      display: flex;
+      width: 90%;
+      margin: 0 auto;
       margin-bottom: 2rem;
+      justify-content: flex-end;
+
+      .payButton{
+
+        width: 180px;
+        height: 45px;
+        background-color: rgb(58, 75, 94);
+        color: white;
+        //font-weight: bold;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 4px;
+        letter-spacing: 0.05rem;
+        transition: all 0.2s;
+
+        &:hover{
+          
+          box-shadow: 0px 0px 10px black;
+          background-color: white;
+          color: rgb(58, 75, 94);
+          font-weight: bold;
+
+        }
+
+        
+      }
+
     }
       
   }  

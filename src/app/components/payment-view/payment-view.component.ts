@@ -12,12 +12,21 @@ export class PaymentViewComponent {
   loadedCart: any [] = [];
   cartList: any [] = [];
   total: number = 0;
+  paymentMethodSelected:string = "Transferencia";
+
+  dataForm: any={
+
+    productName: "",
+    price: 0,
+    paymentMethod: ""
+
+  }
 
     constructor(private router: Router,
     private cartService: CartService,
     private cdr: ChangeDetectorRef){
 
-}
+    }
 
 ngOnInit(){
 
@@ -77,6 +86,18 @@ cartCircleQuantity.innerHTML=(String(this.cartList.length));
   goToCart(){
 
     this.router.navigate(['/Checkout']);
+
+  }
+
+  deacreaseQuantity(data: any){
+
+    let quantityValue = document.getElementsByClassName(data)[0] as HTMLElement;
+
+    console.log("CANTIDAD: "+quantityValue.textContent);
+    
+  }
+
+  increaseQuantity(data: any){
 
   }
 

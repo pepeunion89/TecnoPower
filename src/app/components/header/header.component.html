@@ -3,12 +3,17 @@
         <div class="col-3">
             <img src="../../assets/images/logo.png" alt="logoTecnoPower">
         </div>
-        <div class="contenedor-redes col-9">
-            <div class="redes">
+        <div class="socialMediaContainer col-9">
+            <div class="socialMedia">
                 <img class="social-ico igIco" src="../../assets/images/igIco.png" alt="">
                 <img class="social-ico wsIco" src="../../assets/images/wsIco.png" alt="">
             </div>
-            <input type="text" class="form-control" placeholder="¿Qué estás buscando?">            
+            <div class="searchInputContainer">
+                <input id="searchInput" type="text" class="form-control" placeholder="¿Qué estás buscando?">
+                <button class="btn btn-light" (click)="getFilteredProducts()">
+                    🔍︎
+                </button>
+            </div>            
         </div>
     </div>
 </div>

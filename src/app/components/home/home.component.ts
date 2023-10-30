@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  sendedProducts: any[] = [];
+
+  receivedProducts(productsList: any[]) {
+    this.sendedProducts = productsList;
+  }
+
 }

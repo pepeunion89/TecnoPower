@@ -1,6 +1,8 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { Products } from 'src/app/models/products';
+import { ProductsServiceService } from 'src/app/services/products-service.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,13 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class HeaderComponent {
 
-  cartList: any[] = [];
+  @Output() sendProductsList = new EventEmitter<any[]>();
 
-  constructor(private router: Router,
+  cartList: any[] = [];
+  productsList: Products[] = [];
+
+  constructor(private productsService: ProductsServiceService,
+              private router: Router,
               private cartService: CartService,
               private cdr: ChangeDetectorRef){
 
@@ -53,6 +59,26 @@ export class HeaderComponent {
   goToCart(){
 
     this.router.navigate(['/Checkout'])
+
+  }
+
+  getFilteredProducts(){
+
+    let inputValue = (document.getElementById('searchInput') as HTMLInputElement).value;
+    
+    if(!(inputValue==='')){
+
+      this.productsList = this.productsService.getSearchProductsFiltered(inputValue);
+
+      this.sendProductsList.emit(this.productsList);
+
+    }else{
+      
+      this.productsList = this.productsService.getProducts();
+
+      this.sendProductsList.emit(this.productsList);
+
+    }
 
   }
 

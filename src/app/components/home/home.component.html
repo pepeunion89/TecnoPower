@@ -1,5 +1,5 @@
-<app-header></app-header>
+<app-header (sendProductsList)="receivedProducts($event)"></app-header>
     <div class="container contenedor">    
-        <app-container></app-container>
+        <app-container [receivedProductsList]="sendedProducts"></app-container>
     </div>
 <app-footer></app-footer>

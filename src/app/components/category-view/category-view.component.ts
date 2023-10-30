@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Products } from 'src/app/models/products';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
@@ -132,6 +132,27 @@ export class CategoryViewComponent {
     }
 
   }
+
+  getFilteredProducts(){
+
+    this.cdr.detectChanges();
+
+    let flag = 0;
+
+    let inputValue = (document.getElementById('searchInput') as HTMLInputElement).value;
+    
+    if(!(inputValue==='')){
+
+      this.products_list = this.products_service.getSearchProductsFilteredByCategory(inputValue, Number(this.categoryNameAndId[1]));
+
+    }else{
+      
+      this.products_list = this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1]));
+
+    }
+
+  }
+
 
   
 }

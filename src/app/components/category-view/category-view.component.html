@@ -29,8 +29,14 @@
         <div class="cartCircleQuantity">{{cartList.length}}</div>
     </div>
 </div>
-<div class="contenedor-general container"> 
+<div class="contenedor-general container">      
     <div class="filters">
+        <div class="searchInputContainer">
+            <input id="searchInput" type="text" class="form-control" placeholder="¿Qué estás buscando?">
+            <button class="btn btn-light" (click)="getFilteredProducts()">
+                🔍︎
+            </button>
+        </div> 
         <div class="search-type sort-by-price">
             <p>Ordenar por precio:</p>
             <div><input type="radio" name="radio-sort"> Menor a mayor</div>

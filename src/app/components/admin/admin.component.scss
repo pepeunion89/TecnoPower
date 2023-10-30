@@ -1,0 +1,88 @@
+.adminContainer{
+    display: flex;
+    justify-content: center;
+
+    .abmProducts{
+        min-width: 400px;
+        width: 800px;
+        max-width: 800px;
+        margin-top: 2rem ;
+
+        h2{
+            text-align: center;
+        }
+
+        .searchProdct{
+            width: 100%;  
+            margin: 1rem 0 1rem 0; 
+                 
+            .searchProductInput{
+                width: 100%;
+                height: 50px;
+                border-radius: 4px;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -ms-border-radius: 4px;
+                -o-border-radius: 4px;
+            }
+
+        }
+
+        .product{
+            display: flex;
+            height: 110px;
+            border: 1px solid lightgray;
+            border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius: 4px;
+            -o-border-radius: 4px;
+            margin-bottom: 1rem;
+
+           .imgContainer{
+                width: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: white;
+
+                img{
+                    height: 100px;
+                    width: auto;                
+                }
+           }
+
+           .namePriceContainer{
+                background-color: rgb(243, 243, 243);
+                width: 75%;
+           
+                .productName{
+                    display: flex;
+                }
+    
+           }
+
+           .editOrDelete{
+                width: 10%;
+                display: flex;
+                flex-direction: column;
+
+                button{
+                    width: 100%;
+                    height: 50%;
+                    border: none;
+                }
+
+                    .edit{
+                        background-color: rgb(0, 160, 0);
+                    }
+
+                    .delete{
+                        background-color: red;
+                    }
+           }
+
+        }
+
+    }
+}

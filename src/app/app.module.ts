@@ -16,6 +16,7 @@ import { CategoryViewComponent } from './components/category-view/category-view.
 import { FormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { PaymentViewComponent } from './components/payment-view/payment-view.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PaymentViewComponent } from './components/payment-view/payment-view.com
     NumberFormatPipe,
     DialogsComponent,
     CategoryViewComponent,
-    PaymentViewComponent
+    PaymentViewComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

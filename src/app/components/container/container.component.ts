@@ -14,16 +14,21 @@ export class ContainerComponent {
 
   @Input() receivedProductsList: any[] = [];
   products_list: Products[]=[];
+  cartList: any[] = [];
 
   constructor(private products_service: ProductsServiceService,
               private cdr: ChangeDetectorRef,
+              private cartService: CartService,
               private dialog: MatDialog){
 
   }
 
   ngOnInit(){
 
+    this.cdr.detectChanges();
+
     this.products_list = this.products_service.getProducts();
+    this.cartList = this.cartService.getCartList();
 
   }
 
@@ -31,6 +36,7 @@ export class ContainerComponent {
 
     this.cdr.detectChanges();
     this.products_list = this.receivedProductsList;
+    this.cartList = this.cartService.getCartList();
 
   }
 

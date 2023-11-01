@@ -1,63 +1,35 @@
-<div class="container-banner">
-    <div class="container centered-banner">
-        <div class="background-banner">
-            <img src="../../assets/images/logo.png" alt="logoTecnoPower">
-            <h2 class='lineUp'>{{categoryNameAndId[0]}}</h2>
-        </div>        
-    </div>
-    <div class="menu">
-        <ul>
-            <div (click)="goHome()">
-                <li>Menú principal</li>
-            </div>
-            <div (click)="goToCategorySection('Auriculares-1')">
-                <li>Auriculares</li>
-            </div>
-            <div (click)="goToCategorySection('Celulares-2')">
-                <li>Celulares</li>
-            </div>
-            <div (click)="goToCategorySection('Linea Stanley')">
-                <li>Línea Stanley</li>
-            </div>
-            <div (click)="goToCart()">
-                <li class="cartIcoContainer">
-                    <img class="cartIco" src="../../../assets/images/carritoIco.png" alt="">
-                </li>
-            </div>
-            <!-- <input type="text" placeholder="¿Qué estás buscando?">      -->          
-        </ul>
-        <div class="cartCircleQuantity">{{cartList.length}}</div>
-    </div>
-</div>
+<app-header></app-header>
 <div class="contenedor-general container">      
-    <div class="filters">
+    <div class="searchAndFilterContainer"> 
         <div class="searchInputContainer">
-            <input id="searchInput" type="text" class="form-control" placeholder="¿Qué estás buscando?">
+            <input id="searchInputCategoryView" type="text" class="form-control" placeholder="¿Qué estás buscando?">
             <button class="btn btn-light" (click)="getFilteredProducts()">
                 🔍︎
             </button>
         </div> 
-        <div class="search-type sort-by-price">
-            <p>Ordenar por precio:</p>
-            <div><input type="radio" name="radio-sort"> Menor a mayor</div>
-            <div><input type="radio" name="radio-sort"> Mayor a menor</div>
-        </div>
-        <div class="search-type range-price">
-            <p>Rango de precio:</p>            
-            <p class="show-range-paragraph">
-                <span class="min-range">Min:{{minPrice}}</span>
-                <span class="max-range">Máx:{{maxPrice}}</span>
-            </p>
-            <mat-slider class="mat-slide-class" min="{{minPrice}}" max="{{maxPrice}}">
-                <input id="min-range" value="{{minPrice}}" matSliderStartThumb  (input)="updateMinRange()">
-                <input id="max-range" value="{{maxPrice}}" matSliderEndThumb  (input)="updateMaxRange()">
-            </mat-slider>          
-        </div>
-        <div class="search-type sort-by-brand">
-            <p>Marca:</p>
-            <div *ngFor="let brand of brands"><input type="checkbox"> {{brand}}</div>
-        </div>
-    </div>  
+        <div class="filters">       
+            <div class="search-type sort-by-price">
+                <p>Ordenar por precio:</p>
+                <div><input type="radio" name="radio-sort"> Menor a mayor</div>
+                <div><input type="radio" name="radio-sort"> Mayor a menor</div>
+            </div>
+            <div class="search-type range-price">
+                <p>Rango de precio:</p>            
+                <p class="show-range-paragraph">
+                    <span class="min-range">Min:{{minPrice}}</span>
+                    <span class="max-range">Máx:{{maxPrice}}</span>
+                </p>
+                <mat-slider class="mat-slide-class" min="{{minPrice}}" max="{{maxPrice}}">
+                    <input id="min-range" value="{{minPrice}}" matSliderStartThumb  (input)="updateMinRange()">
+                    <input id="max-range" value="{{maxPrice}}" matSliderEndThumb  (input)="updateMaxRange()">
+                </mat-slider>          
+            </div>
+            <div class="search-type sort-by-brand">
+                <p>Marca:</p>
+                <div *ngFor="let brand of brands"><input type="checkbox"> {{brand}}</div>
+            </div>
+        </div>  
+    </div>
     <div class="contenedor-category">
         <div class="tarjetas" *ngFor="let product of products_list" (click)=openDialog(product)>
             <img src="{{product.img}}" alt="">

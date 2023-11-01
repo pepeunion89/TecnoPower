@@ -1,18 +1,18 @@
 <div class="header-div">
     <div class="container div-centrado">
-        <div class="col-3">
-            <img src="../../assets/images/logo.png" alt="logoTecnoPower">
+        <div class="logoContainer col-3">
+            <img src="../../assets/images/logo2.png" alt="logoTecnoPower">
         </div>
         <div class="socialMediaContainer col-9">
+            <div class="searchInputContainer">
+                <input id="searchInput" type="text" class="form-control" placeholder="¿Qué estás buscando?">
+                <button id="searchButton" class="btn btn-light" (click)="getFilteredProducts()">
+                    🔍︎
+                </button>
+            </div>
             <div class="socialMedia">
                 <img class="social-ico igIco" src="../../assets/images/igIco.png" alt="">
                 <img class="social-ico wsIco" src="../../assets/images/wsIco.png" alt="">
-            </div>
-            <div class="searchInputContainer">
-                <input id="searchInput" type="text" class="form-control" placeholder="¿Qué estás buscando?">
-                <button class="btn btn-light" (click)="getFilteredProducts()">
-                    🔍︎
-                </button>
             </div>            
         </div>
     </div>

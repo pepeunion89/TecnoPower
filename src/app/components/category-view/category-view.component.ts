@@ -51,6 +51,7 @@ export class CategoryViewComponent {
     
     this.route.params.subscribe(params => {
       this.categoryNameAndId = params['category'].split("-",2);
+      //alert(this.categoryNameAndId);
       this.products_list = this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1]));
       this.loadBrands();
       this.minAndMaxPrice();
@@ -70,7 +71,7 @@ export class CategoryViewComponent {
   }
 
   ngOnChanges(){
-    this.cdr.detectChanges();
+    this.cdr.detectChanges();    
 
     let cartCircleQuantity = document.getElementsByClassName('cartCircleQuantity')[0] as HTMLElement;
     
@@ -136,14 +137,14 @@ export class CategoryViewComponent {
   getFilteredProducts(){
 
     this.cdr.detectChanges();
-
     let flag = 0;
 
-    let inputValue = (document.getElementById('searchInput') as HTMLInputElement).value;
-    
+    let inputValue = (document.getElementById('searchInputCategoryView') as HTMLInputElement).value;
+    console.log(inputValue);
     if(!(inputValue==='')){
 
       this.products_list = this.products_service.getSearchProductsFilteredByCategory(inputValue, Number(this.categoryNameAndId[1]));
+      console.log(this.products_list);
 
     }else{
       

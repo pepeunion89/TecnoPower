@@ -1,34 +1,4 @@
-<div class="container-banner">
-    <div class="container centered-banner">
-        <div class="background-banner">
-            <img src="../../assets/images/logo.png" alt="logoTecnoPower">
-            <h2 class='lineUp'>TU PEDIDO</h2>
-        </div>        
-    </div>
-    <div class="menu">
-        <ul>
-            <div (click)="goHome()">
-                <li>Menú principal</li>
-            </div>
-            <div (click)="goToCategorySection('Auriculares-1')">
-                <li>Auriculares</li>
-            </div>
-            <div (click)="goToCategorySection('Celulares-2')">
-                <li>Celulares</li>
-            </div>
-            <div (click)="goToCategorySection('Linea Stanley')">
-                <li>Línea Stanley</li>
-            </div>
-            <div (click)="goToCart()">
-                <li class="cartIcoContainer">
-                    <img class="cartIco" src="../../../assets/images/carritoIco.png" alt="">
-                </li>
-            </div>
-            <!-- <input type="text" placeholder="¿Qué estás buscando?">      -->          
-        </ul>
-        <div class="cartCircleQuantity">{{cartList.length}}</div>
-    </div>
-</div>
+<app-header></app-header>
 <div class="contenedor-general container">
     <div class="cartTitle">
         <p>Carrito de compras</p>

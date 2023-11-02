@@ -15,6 +15,8 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CategoryViewComponent {
 
+  @Output() hideTopSearchInput= new EventEmitter<any>();
+
   products_list: Products[]=[];
   categoryNameAndId: string = "";
   brands:any[] = [];
@@ -22,6 +24,8 @@ export class CategoryViewComponent {
   minPrice: number = 0;
   maxPrice: number = 0;
   cartList: any[] = [];
+
+  //document.getElementById()            SEGUIR ACA -- - - - -
 
   // RANGE SORT
 
@@ -48,6 +52,8 @@ export class CategoryViewComponent {
   ngOnInit(){
 
     this.cdr.detectChanges();
+
+    this.hideTopSearchInput.emit('none');
     
     this.route.params.subscribe(params => {
       this.categoryNameAndId = params['category'].split("-",2);

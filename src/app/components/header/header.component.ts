@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { Products } from 'src/app/models/products';
@@ -11,6 +11,7 @@ import { ProductsServiceService } from 'src/app/services/products-service.servic
 })
 export class HeaderComponent {
 
+  @Input() hideTopSearchInput: any;
   @Output() sendProductsList = new EventEmitter<any[]>();
 
   cartList: any[] = [];
@@ -25,6 +26,9 @@ export class HeaderComponent {
 
   ngOnInit(){
     this.cdr.detectChanges();
+
+    (document.getElementById('searchInputContainerId') as HTMLElement).style.display = "'"+this.hideTopSearchInput+"'";
+
     let cartCircleQuantity = document.getElementsByClassName('cartCircleQuantity')[0] as HTMLElement;
     
     this.cartList = this.cartService.getCartList();

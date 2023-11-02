@@ -15,7 +15,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CategoryViewComponent {
 
-  @Output() hideTopSearchInput= new EventEmitter<any>();
+  searchInputDisplay: string = 'none';
 
   products_list: Products[]=[];
   categoryNameAndId: string = "";
@@ -52,8 +52,6 @@ export class CategoryViewComponent {
   ngOnInit(){
 
     this.cdr.detectChanges();
-
-    this.hideTopSearchInput.emit('none');
     
     this.route.params.subscribe(params => {
       this.categoryNameAndId = params['category'].split("-",2);

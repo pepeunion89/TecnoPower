@@ -1,6 +1,6 @@
-<app-header></app-header>
+<app-header [searchInputDisplay]="searchInputDisplay"></app-header>
 <div class="contenedor-general container">
-    <div class="cartTitle">
+    <div class="cartTitle" *ngIf="flagView===1">
         <p>Carrito de compras</p>
     </div> 
     <div class="productAdded" *ngFor="let item of loadedCart">
@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-    <div class="productAdded total">
+    <div class="productAdded total" *ngIf="flagView===1">
         <div class="payMethodSelect">
             <div class="containerTextPayMethod">
                 <p>COMO</p>
@@ -41,10 +41,16 @@
             Total: $ <span>{{total | numberFormat}}</span>
         </div>
     </div>
-    <div class="payButtonContainer">
+    <div class="payButtonContainer" *ngIf="flagView===1">
         <button class="payButton">
             COMPRAR
         </button>
+    </div>
+    <div class="emptyCart" *ngIf="flagView===0">
+        <div class="emptyCartImg">
+            <img src="../../../assets/images/emptyCart.png" alt="">
+            <p>Carrito vacío</p>
+        </div>
     </div>
 </div>
 <app-footer></app-footer>

@@ -330,6 +330,50 @@
       }
 
     }
+
+    .emptyCart{
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 500px;
+      display: flex;
+
+      .emptyCartImg{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+        border: 1px solid lightgray;
+        border-radius: 999px;
+        background-color: lightgray;
+        box-shadow: 0 0 10px gray;
+
+        img{
+
+          width: 150px;
+          height: auto;
+          margin: 0 auto;
+          transform: scaleX(-1);          
+
+        }
+
+        p{
+          margin-top: 1rem;
+          margin-bottom: 0px;
+          text-align: center;
+          padding: 0px;
+        }
+
+      }
+
+
+    }
       
   }  
     

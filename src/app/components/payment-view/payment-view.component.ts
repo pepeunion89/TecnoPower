@@ -9,6 +9,9 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class PaymentViewComponent {
 
+  searchInputDisplay: string = 'none';
+  flagView = 0;
+
   loadedCart: any [] = [];
   cartList: any [] = [];
   total: number = 0;
@@ -41,6 +44,12 @@ let cartCircleQuantity = document.getElementsByClassName('cartCircleQuantity')[0
 
 this.cartList = this.cartService.getCartList();
 
+if(this.cartList.length===0){
+  this.flagView = 0;
+}else{
+  this.flagView = 1;
+}
+
 cartCircleQuantity.innerHTML=(String(this.cartList.length));
 
   for(let product of this.loadedCart){
@@ -60,6 +69,12 @@ this.total = 0;
 let cartCircleQuantity = document.getElementsByClassName('cartCircleQuantity')[0] as HTMLElement;
 
 this.cartList = this.cartService.getCartList();
+
+if(this.cartList.length===0){
+  this.flagView = 0;
+}else{
+  this.flagView = 1;
+}
 
 cartCircleQuantity.innerHTML=(String(this.cartList.length));
 

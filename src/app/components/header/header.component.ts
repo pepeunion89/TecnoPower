@@ -11,7 +11,7 @@ import { ProductsServiceService } from 'src/app/services/products-service.servic
 })
 export class HeaderComponent {
 
-  @Input() hideTopSearchInput: any;
+  @Input() searchInputDisplay: string = 'flex';
   @Output() sendProductsList = new EventEmitter<any[]>();
 
   cartList: any[] = [];
@@ -25,9 +25,7 @@ export class HeaderComponent {
   }
 
   ngOnInit(){
-    this.cdr.detectChanges();
-
-    (document.getElementById('searchInputContainerId') as HTMLElement).style.display = "'"+this.hideTopSearchInput+"'";
+    this.cdr.detectChanges();    
 
     let cartCircleQuantity = document.getElementsByClassName('cartCircleQuantity')[0] as HTMLElement;
     
@@ -39,6 +37,7 @@ export class HeaderComponent {
 
   ngOnChanges(){
     this.cdr.detectChanges();
+
     let cartCircleQuantity = document.getElementsByClassName('cartCircleQuantity')[0] as HTMLElement;
     
     this.cartList = this.cartService.getCartList();

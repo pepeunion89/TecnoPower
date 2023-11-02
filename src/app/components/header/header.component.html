@@ -4,7 +4,7 @@
             <img src="../../assets/images/logo2.png" alt="logoTecnoPower">
         </div>
         <div class="socialMediaContainer col-9">
-            <div id="searchInputContainerId" class="searchInputContainer">
+            <div id="searchInputContainerId" class="searchInputContainer" [style.display]="searchInputDisplay">
                 <input id="searchInput" type="text" class="form-control" placeholder="¿Qué estás buscando?">
                 <button id="searchButton" class="btn btn-light" (click)="getFilteredProducts()">
                     🔍︎

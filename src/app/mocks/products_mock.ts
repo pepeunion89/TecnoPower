@@ -6,7 +6,7 @@ export const PRODUCTS: Products[] = [
 
         id_product: 1,
         product_name: "Auriculares XIAOMI Redmi Buds 3 PRO",
-        img: "../../assets/images/auriculares/bud3pro.jpg",
+        img: "https://i.postimg.cc/DzyzSkJM/bud3pro.jpg",
         price: 40000,
         code_bar: 1001,
         code_prov: "XIAOMI",
@@ -20,7 +20,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 2,
         product_name: "Auriculares XIAOMI Redmi Buds 4",
-        img: "../../assets/images/auriculares/buds4.jpg",
+        img: "https://i.postimg.cc/vBC824PJ/buds4.png",
         price: 30000,
         code_bar: 1002,
         code_prov: "XIAOMI",
@@ -33,7 +33,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 3,
         product_name: "Auriculares XIAOMI Redmi Buds 4 Lite",
-        img: "../../assets/images/auriculares/buds4lite.jpg",
+        img: "https://i.postimg.cc/d0HVdHGt/buds4lite.png",
         price: 19000,
         code_bar: 1003,
         code_prov: "XIAOMI",
@@ -46,7 +46,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 4,
         product_name: "Auriculares Lenovo XG01",
-        img: "../../assets/images/auriculares/lenovoxg01.jpg",
+        img: "https://i.postimg.cc/qRNMGsGc/lenovoxg01.png",
         price: 20000,
         code_bar: 1004,
         code_prov: "LENOVO",
@@ -59,7 +59,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 5,
         product_name: "Auriculares Lenovo XT96",
-        img: "../../assets/images/auriculares/lenovoxt96.jpg",
+        img: "https://i.postimg.cc/G3sm8jtd/lenovoxt96.png",
         price: 14000,
         code_bar: 1005,
         code_prov: "LENOVO",
@@ -72,7 +72,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 6,
         product_name: "Auriculares Lenovo LP40 PRO",
-        img: "../../assets/images/auriculares/lenovolp40pro.jpg",
+        img: "https://i.postimg.cc/vT9YJGkc/lenovolp40pro.png",
         price: 11000,
         code_bar: 1006,
         code_prov: "LENOVO",
@@ -85,7 +85,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 7,
         product_name: "Auriculares Bluethoot Pop It",
-        img: "../../assets/images/auriculares/popit.jpg",
+        img: "https://i.postimg.cc/zXZXnRHW/popit.png",
         price: 9000,
         code_bar: 1007,
         code_prov: "POP IT",
@@ -98,7 +98,8 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 8,
         product_name: "Samsung Galaxy A34 5G",
-        img: "../../assets/images/celulares/galaxyA345g.jpg",
+        //img: "../../assets/images/celulares/galaxyA345g.jpg",
+        img: "https://i.postimg.cc/G2zMQDqQ/galaxy-A345g.jpg",
         price: 200000,
         code_bar: 1008,
         code_prov: "SAMSUNG",
@@ -111,7 +112,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 9,
         product_name: "Samsung Galaxy A54 5G",
-        img: "../../assets/images/celulares/galaxyA545g.png",
+        img: "https://i.postimg.cc/zGW0Q6x3/galaxy-A545g.png",
         price: 300000,
         code_bar: 1009,
         code_prov: "SAMSUNG",
@@ -124,7 +125,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 10,
         product_name: "Samsung Galaxy S21 FE 5G",
-        img: "../../assets/images/celulares/galaxyS21fe5g.png",
+        img: "https://i.postimg.cc/vH4Prc9r/galaxy-S21fe5g.png",
         price: 380000,
         code_bar: 1010,
         code_prov: "SAMSUNG",
@@ -137,7 +138,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 11,
         product_name: "Iphone 14 PRO / PRO MAX",
-        img: "../../assets/images/celulares/iphone14proYmax.png",
+        img: "https://i.postimg.cc/vTN0RsRx/iphone14pro-Ymax.png",
         price: 0,
         code_bar: 1011,
         code_prov: "APPLE",
@@ -150,7 +151,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 12,
         product_name: "XIAOMI Redmi Note 11 PRO 5G",
-        img: "../../assets/images/celulares/redmiNote11Pro5Gb.png",
+        img: "https://i.postimg.cc/pdHqMCSC/redmi-Note11-Pro5-Gb.png",
         price: 350000,
         code_bar: 1012,
         code_prov: "XIAOMI",
@@ -163,7 +164,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 13,
         product_name: "XIAOMI Redmi Note 12 PRO 5G",
-        img: "../../assets/images/celulares/xiaomiRedmiNote12Pro5g.jpg",
+        img: "https://i.postimg.cc/Zqxjb3tS/xiaomi-Redmi-Note12-Pro5g.jpg",
         price: 320000,
         code_bar: 1013,
         code_prov: "XIAOMI",
@@ -176,7 +177,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 14,
         product_name: "XIAOMI Mi 12 Lite 5G",
-        img: "../../assets/images/celulares/xiaomiMi12Lite5g.png",
+        img: "https://i.postimg.cc/fT18BDj6/xiaomi-Mi12-Lite5g.png",
         price: 420000,
         code_bar: 1014,
         code_prov: "XIAOMI",
@@ -189,7 +190,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 15,
         product_name: "XIAOMI Pocophone Poco M5s",
-        img: "../../assets/images/celulares/xiaomiPocophonePocoM5s.png",
+        img: "https://i.postimg.cc/7PssJgCP/xiaomi-Pocophone-Poco-M5s.png",
         price: 220000,
         code_bar: 1014,
         code_prov: "XIAOMI",
@@ -202,7 +203,7 @@ export const PRODUCTS: Products[] = [
     {
         id_product: 16,
         product_name: "Hidrogel",
-        img: "../../assets/images/celulares/hidrogel.png",
+        img: "https://i.postimg.cc/4ydWF30T/hidrogel.png",
         price: 3000,
         code_bar: 1015,
         code_prov: "HIDROGEL",

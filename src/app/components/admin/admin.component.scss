@@ -28,16 +28,54 @@
 
         }
 
+        .newProductContainer{
+            width: 100%;
+            height: 36px;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
+
+            .newProduct{
+                display: flex;
+                height: 36px;
+                border: none;
+                background-color: rgb(161, 235, 161);
+                border-radius: 999px;
+                padding: 0px;
+                transition: all 0.3s;
+
+                &:hover{
+                    background-color: lightgreen;
+                }
+
+                img{
+                    width: 38px;
+                    height: auto;
+                    margin-top: -1px;
+                    margin-left: -2px;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+
+                }
+
+                p{
+                    line-height: 36px;
+                    padding-left: 0.5rem;
+                    padding-right: 0.5rem;
+                }
+
+            }
+
+        }
+
         .product{
             display: flex;
             height: 110px;
-            border: 1px solid lightgray;
-            border-radius: 4px;
-            -webkit-border-radius: 4px;
-            -moz-border-radius: 4px;
-            -ms-border-radius: 4px;
-            -o-border-radius: 4px;
+            //border: 1px solid lightgray;
             margin-bottom: 1rem;
+            box-shadow: 0 0 5px gray;
 
            .imgContainer{
                 width: 15%;
@@ -57,29 +95,34 @@
                 width: 75%;
            
                 .productName{
-                    display: flex;
+                    display: flex;   
+                    padding: 1rem;
+                }
+
+                span{                    
+                    padding: 1rem;
                 }
     
            }
 
            .editOrDelete{
+
                 width: 10%;
                 display: flex;
                 flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                background-color: rgb(243, 243, 243);
 
-                button{
-                    width: 100%;
-                    height: 50%;
-                    border: none;
+                img{
+                    width: 36px;
+                    height: auto;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
                 }
-
-                    .edit{
-                        background-color: rgb(0, 160, 0);
-                    }
-
-                    .delete{
-                        background-color: red;
-                    }
+                    
            }
 
         }

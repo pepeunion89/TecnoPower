@@ -4,6 +4,12 @@
         <div class="searchProdct">
             <input class="searchProductInput" type="text" placeholder="Buscar producto...">
         </div>
+        <div class="newProductContainer">
+            <button class="newProduct">
+                <img src="../../../assets/images/crud-add.png" alt="">    
+                <p>Agregar producto</p>                
+            </button>
+        </div>
         <div class="product" *ngFor="let product of productList">
             <div class="imgContainer">
                 <img src="{{product.img}}" alt="">
@@ -13,8 +19,8 @@
                 <span>${{product.price | numberFormat}}</span>        
             </div>    
             <div class="editOrDelete">
-                <button class="edit">EDITAR</button>
-                <button class="delete">ELIMINAR</button>
+                    <img src="../../../assets/images/crud-edit.png" alt="">
+                    <img src="../../../assets/images/crud-remove.png" alt="">
             </div>
         </div>        
     </div>

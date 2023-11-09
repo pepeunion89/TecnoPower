@@ -1,6 +1,6 @@
 <div class="adminContainer container">
     <div class="abmProducts">
-        <h2>Administrar productos</h2>
+        <h2>ADMINISTRAR PRODUCTOS</h2>
         <div class="searchProdct">
             <input class="searchProductInput" type="text" placeholder="Buscar producto...">
         </div>
@@ -12,7 +12,7 @@
         </div>
         <div class="product" *ngFor="let product of productList">
             <div class="imgContainer">
-                <img src="{{product.img}}" alt="">
+                <img src="{{product.img_url}}" alt="">
             </div>
             <div class="namePriceContainer">
                 <h3 class="productName">{{product.product_name}} </h3>

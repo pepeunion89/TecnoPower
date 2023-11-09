@@ -32,7 +32,7 @@
     </div>
     <div class="contenedor-category">
         <div class="tarjetas" *ngFor="let product of products_list" (click)=openDialog(product)>
-            <img src="{{product.img}}" alt="">
+            <img src="{{product.img_url}}" alt="">
             <div class="container-title-price-button">
                 <p class="product-name">{{product.product_name}}</p>
                 <p class="product-price">${{product.price | numberFormat}}</p>

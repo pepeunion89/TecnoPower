@@ -31,7 +31,7 @@ export class ProductsServiceService {
     let products_filtered: Products[] = [];
 
     for(let product of PRODUCTS){
-      if(product.category_id===categoryId){
+      if(product.category.id===categoryId){
         products_filtered.push(product);
       }
     }

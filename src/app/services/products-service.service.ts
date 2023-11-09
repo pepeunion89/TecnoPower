@@ -1,11 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Products } from '../models/products';
 import { PRODUCTS } from '../mocks/products_mock';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsServiceService {
+
+/*  ESTO HAY QUE IMPLEMENTARLO CUANDO HAGAMOS LAS SOLICITUDES A LA API -------------
+
+  private apiServerUrl=environment.apiBaseUrl;
+
+  constructor(private http: HttpClient) { }
+
+  public getProductos():Observable<Producto[]>{
+
+    return this.http.get<Producto[]>(`${this.apiServerUrl}/producto/lista`);
+
+  }
+  
+  ------------------------------------------------------------------------------- */
 
   getProducts(): Products[] {
     return PRODUCTS;

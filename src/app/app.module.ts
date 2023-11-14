@@ -17,6 +17,10 @@ import { FormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { PaymentViewComponent } from './components/payment-view/payment-view.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
+import { AddProductViewComponent } from './components/add-product-view/add-product-view.component';
 
 @NgModule({
   declarations: [
@@ -30,16 +34,20 @@ import { AdminComponent } from './components/admin/admin.component';
     DialogsComponent,
     CategoryViewComponent,
     PaymentViewComponent,
-    AdminComponent
+    AdminComponent,
+    AddProductViewComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule, 
     AppRoutingModule,
     FontAwesomeModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    MatSliderModule
+    MatSliderModule,
+    MatPaginatorModule,
+    MatTableModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

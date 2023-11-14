@@ -360,7 +360,7 @@ export const PRODUCTS: Products[] = [
         product_name: "XIAOMI Pocophone Poco M5s",
         img_url: "https://i.postimg.cc/7PssJgCP/xiaomi-Pocophone-Poco-M5s.png",
         price: 220000,
-        code_bar: 1014,
+        code_bar: 1015,
         code_prov: "XIAOMI",
         stock: 10,
         description: "Una pantalla AMOLED DotDisplay líder en su clase que cuenta con una claridad excepcional, colores impresionantes y un brillo increíble que garantizan una mejor experiencia visual",
@@ -385,7 +385,49 @@ export const PRODUCTS: Products[] = [
         product_name: "Hidrogel",
         img_url: "https://i.postimg.cc/4ydWF30T/hidrogel.png",
         price: 3000,
-        code_bar: 1015,
+        code_bar: 1016,
+        code_prov: "HIDROGEL",
+        stock: 10,
+        description: "Protector de pantalla celular con hidrogel",
+        category: {id: 2, 
+            category_name: "CELULARES"},
+        tags: [
+             {
+                 tag_id: 5, 
+                 tag_name: "Vidrio templado" 
+             }
+         ],
+         maker: {id: 0, 
+                maker_name: "GENERICO"},
+        supplier_id: 1
+    },
+    {
+        id_product: 17,
+        product_name: "Hidrogel2",
+        img_url: "https://i.postimg.cc/4ydWF30T/hidrogel.png",
+        price: 3000,
+        code_bar: 1017,
+        code_prov: "HIDROGEL",
+        stock: 10,
+        description: "Protector de pantalla celular con hidrogel",
+        category: {id: 2, 
+            category_name: "CELULARES"},
+        tags: [
+             {
+                 tag_id: 5, 
+                 tag_name: "Vidrio templado" 
+             }
+         ],
+         maker: {id: 0, 
+                maker_name: "GENERICO"},
+        supplier_id: 1
+    },
+    {
+        id_product: 18,
+        product_name: "Hidrogel3",
+        img_url: "https://i.postimg.cc/4ydWF30T/hidrogel.png",
+        price: 3000,
+        code_bar: 1018,
         code_prov: "HIDROGEL",
         stock: 10,
         description: "Protector de pantalla celular con hidrogel",

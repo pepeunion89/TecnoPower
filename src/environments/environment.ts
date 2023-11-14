@@ -1,6 +1,7 @@
 export const environment = {
 
-        production: false,  
-        apiBaseUrl: 'http://localhost:8000'
+        production: true,  
+        apiBaseUrl: 'https://fastapi-tecno.onrender.com'
+        //apiBaseUrl: 'http://localhost:8000'
     
 };

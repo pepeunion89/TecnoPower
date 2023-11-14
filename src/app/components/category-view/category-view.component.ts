@@ -7,6 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ChangeDetectionStrategy } from '@angular/compiler';
 import { MatSliderModule } from '@angular/material/slider';
 import { CartService } from 'src/app/services/cart.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule  } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-category-view',
@@ -24,6 +27,33 @@ export class CategoryViewComponent {
   minPrice: number = 0;
   maxPrice: number = 0;
   cartList: any[] = [];
+
+  // Lógica para la paginación
+  itemsPerPage: number = 10;
+  currentPage: number = 1;
+
+  get paginatedProducts() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.products_list.slice(startIndex, endIndex);
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages()) {
+      this.currentPage++;
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  totalPages() {
+    return Math.ceil(this.products_list.length / this.itemsPerPage);
+  }
+
 
   //document.getElementById()            SEGUIR ACA -- - - - -
 
@@ -56,13 +86,24 @@ export class CategoryViewComponent {
     this.route.params.subscribe(params => {
       this.categoryNameAndId = params['category'].split("-",2);
       //alert(this.categoryNameAndId);
-      this.products_list = this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1]));
-      this.loadBrands();
-      this.minAndMaxPrice();
-      this.minPrice = Math.min(...this.prices);
-      this.maxPrice = Math.max(...this.prices);
-      (document.getElementsByClassName('min-range')[0] as HTMLElement).innerHTML="Min: $"+String(this.minPrice);
-      (document.getElementsByClassName('max-range')[0] as HTMLElement).innerHTML="Máx: $"+String(this.maxPrice);
+
+      this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1])).subscribe(
+        (filteredProducts: Products[]) => {
+          this.products_list = filteredProducts;
+          this.loadBrands();
+          this.minAndMaxPrice();
+          this.minPrice = Math.min(...this.prices);
+          this.maxPrice = Math.max(...this.prices);
+          (document.getElementsByClassName('min-range')[0] as HTMLElement).innerHTML="Min: $"+String(this.minPrice);
+          (document.getElementsByClassName('max-range')[0] as HTMLElement).innerHTML="Máx: $"+String(this.maxPrice);
+        },
+        (error) => {
+          console.error('Error fetching filtered products:', error);
+        }
+      );
+      
+      
+      
     });
 
 
@@ -71,6 +112,8 @@ export class CategoryViewComponent {
     this.cartList = this.cartService.getCartList();
 
     cartCircleQuantity.innerHTML=(String(this.cartList.length));
+
+    
 
   }
 
@@ -120,9 +163,8 @@ export class CategoryViewComponent {
     this.brands = [];
 
     for(let product of this.products_list){
-      if(!this.brands.includes(product.maker)){
-        this.brands.push(product.maker);
-        console.log(product.maker);
+      if(!this.brands.includes(product.maker.maker_name)){
+        this.brands.push(product.maker.maker_name);
       }
     }
 
@@ -132,6 +174,8 @@ export class CategoryViewComponent {
 
     this.prices = [];
 
+    console.log("ARRAY TIENE: ");
+    console.log(this.products_list);
     for(let product of this.products_list){
       this.prices.push(product.price);
     }
@@ -147,12 +191,25 @@ export class CategoryViewComponent {
     console.log(inputValue);
     if(!(inputValue==='')){
 
-      this.products_list = this.products_service.getSearchProductsFilteredByCategory(inputValue, Number(this.categoryNameAndId[1]));
-      console.log(this.products_list);
+      this.products_service.getSearchProductsFilteredByCategory(inputValue, Number(this.categoryNameAndId[1])).subscribe(
+        (filteredProducts: Products[]) => {
+          this.products_list = filteredProducts;
+        },
+        (error) => {
+          console.error('Error fetching filtered products by category:', error);
+        }
+      );
 
     }else{
       
-      this.products_list = this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1]));
+      this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1])).subscribe(
+        (filteredProducts: Products[]) => {
+          this.products_list = filteredProducts;
+        },
+        (error) => {
+          console.error('Error fetching filtered products:', error);
+        }
+      );
 
     }
 

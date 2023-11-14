@@ -116,6 +116,7 @@
 .contenedor-general{   
     display: flex; 
     justify-content: center;
+    min-height: 800px;
 
     .searchAndFilterContainer{
 
@@ -306,11 +307,35 @@
   
           
   
-      }
+      } 
   
-  
+      .pagination{
+        margin: 1rem auto;
+        margin-bottom: 2rem;
+        
+        span{
+          margin: 0 1rem 0 1rem;
+        }
 
-}
+        button{
+          border: none;
+          color: rgb(58, 75, 94);
+          transition: all 0.1s;
+          -webkit-transition: all 0.1s;
+          -moz-transition: all 0.1s;
+          -ms-transition: all 0.1s;
+          -o-transition: all 0.1s;
+          
+          &:hover{
+            font-weight: bold;
+            cursor: pointer;
+          }
+
+        }
+
+      }
+
+  }
 
 
   }  

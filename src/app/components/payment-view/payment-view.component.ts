@@ -38,7 +38,6 @@ this.cdr.detectChanges();
 this.total = 0;
 
 this.loadedCart = this.cartService.getCartList();
-console.log(this.loadedCart);
 
 let cartCircleQuantity = document.getElementsByClassName('cartCircleQuantity')[0] as HTMLElement;
 
@@ -113,6 +112,33 @@ cartCircleQuantity.innerHTML=(String(this.cartList.length));
   }
 
   increaseQuantity(data: any){
+
+  }
+
+  removeItem(idProduct: number){
+
+    this.total=0;
+
+    this.cdr.detectChanges();
+
+    for(let index=0; index<this.loadedCart.length; index++){
+
+      if(this.loadedCart[index].id_product===idProduct){
+        this.loadedCart.splice(index,1);
+      }
+
+    }
+
+    for(let product of this.loadedCart){
+
+      this.total += product.price;
+  
+    }
+
+    if(this.loadedCart.length===0){
+   
+      this.flagView=0;
+    }
 
   }
 

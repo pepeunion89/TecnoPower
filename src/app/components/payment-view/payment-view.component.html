@@ -17,6 +17,9 @@
             <div class="price">
                 <p>${{item.price | numberFormat}}</p>
             </div>
+            <div class="trashContainer">
+                <img src="../../../assets/images/crud-remove.png" alt="" (click)="removeItem(item.id_product)">
+            </div>
         </div>
     </div>
     <div class="productAdded total" *ngIf="flagView===1">

@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://fastapi-tecno.onrender.com",
+    "secure": false
+  }
+}

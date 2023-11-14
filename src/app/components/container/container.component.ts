@@ -16,6 +16,35 @@ export class ContainerComponent {
   products_list: Products[]=[];
   cartList: any[] = [];
 
+
+  // Lógica para la paginación
+  itemsPerPage: number = 15;
+  currentPage: number = 1;
+
+  get paginatedProducts() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.products_list.slice(startIndex, endIndex);
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages()) {
+      this.currentPage++;
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  totalPages() {
+    return Math.ceil(this.products_list.length / this.itemsPerPage);
+  }
+
+
+
   constructor(private products_service: ProductsServiceService,
               private cdr: ChangeDetectorRef,
               private cartService: CartService,
@@ -27,7 +56,14 @@ export class ContainerComponent {
 
     this.cdr.detectChanges();
 
-    this.products_list = this.products_service.getProducts();
+    this.products_service.getProducts().subscribe(
+      (products: Products[]) => {
+        this.products_list = products;
+      },
+      (error) => {
+        console.error('Error fetching products:', error);
+      }
+    );
     this.cartList = this.cartService.getCartList();
 
   }

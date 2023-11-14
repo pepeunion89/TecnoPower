@@ -71,13 +71,27 @@ export class HeaderComponent {
     
     if(!(inputValue==='')){
 
-      this.productsList = this.productsService.getSearchProductsFiltered(inputValue);
+      this.productsService.getSearchProductsFiltered(inputValue).subscribe(
+        (filteredProducts: Products[]) => {
+          this.productsList = filteredProducts;
+        },
+        (error) => {
+          console.error('Error fetching filtered products:', error);
+        }
+      );
 
       this.sendProductsList.emit(this.productsList);
 
     }else{
       
-      this.productsList = this.productsService.getProducts();
+      this.productsService.getProducts().subscribe(
+        (products: Products[]) => {
+          this.productsList = products;
+        },
+        (error) => {
+          console.error('Error fetching products:', error);
+        }
+      );
 
       this.sendProductsList.emit(this.productsList);
 

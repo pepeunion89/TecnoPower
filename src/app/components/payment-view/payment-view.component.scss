@@ -114,7 +114,7 @@
   
   
   .contenedor-general{   
-    min-height: 500px;
+    min-height: 800px;
 
     .cartTitle{
       padding: 1rem;
@@ -218,6 +218,20 @@
 
           p{
             margin: 0;
+          }
+
+        }
+
+      }
+
+      .trashContainer{
+
+        img{
+          width: 24px;
+          height: auto;
+
+          &:hover{
+            cursor: pointer;
           }
 
         }

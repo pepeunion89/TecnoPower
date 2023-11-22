@@ -21,6 +21,7 @@ export class AddProductViewComponent {
   makersList: Makers[] = [];
   makerSelected: any = "";              
   product: ProductsApi = {} as ProductsApi;
+  colorNumbers = [1,2,3,4,5];
 
   constructor(private categoriesService: CategoriesServiceService,
               private productService: ProductsServiceService,
@@ -105,6 +106,27 @@ export class AddProductViewComponent {
       alert("Producto agregado.");
     }) 
   }
+
+  eodColor(number: number){
+
+    let colorTextInput = document.getElementsByClassName('colorName-'+number)[0] as HTMLInputElement;
+    let colorInput = document.getElementsByClassName('color-'+number)[0] as HTMLInputElement;
+    let chkboxInput = document.getElementsByClassName('enableColor-'+number)[0] as HTMLInputElement;
+
+    if(chkboxInput.checked){
+      colorInput.removeAttribute('disabled');
+      colorInput.style.backgroundColor='lightgreen';
+      colorTextInput.removeAttribute('disabled');
+      colorTextInput.setAttribute('placeholder','Color...');
+    }else{
+      colorInput.setAttribute('disabled','');
+      colorInput.style.backgroundColor='transparent';
+      colorTextInput.setAttribute('disabled','');
+      colorTextInput.setAttribute('placeholder','');
+    }
+    
+  }
+
 
   exit(){
     this.dialogRef.close();

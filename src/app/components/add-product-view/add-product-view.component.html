@@ -43,9 +43,18 @@
             <button>+ Nuevo fabricante</button>
         </div>
         <div class="colorDiv">
-            <span>Colores</span>
-            <select class="selectedColor" name="" id=""></select>
-            <button>+ Nuevo color</button>
+            <span>Colores</span>            
+            <div class="colorSelectorEnableContainer">
+                <div class="colorNameContainer">
+                    <input type="text" class="colorName-{{number}}" disabled *ngFor="let number of colorNumbers"> 
+                </div>
+                <div class="colorSelectorContainer">
+                    <input type="color" class="color-{{number}}" disabled *ngFor="let number of colorNumbers"> 
+                </div>     
+                <div class="colorEnableContainer">
+                    <input type="checkbox" class="enableColor-{{number}}" (click)="eodColor(number)" *ngFor="let number of colorNumbers">
+                </div>    
+            </div>   
         </div>
         <div class="descriptionDiv">
             <span>Descripción</span>

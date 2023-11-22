@@ -10,8 +10,8 @@
         <div class="filters">       
             <div class="search-type sort-by-price">
                 <p>Ordenar por precio:</p>
-                <div><input type="radio" name="radio-sort"> Menor a mayor</div>
-                <div><input type="radio" name="radio-sort"> Mayor a menor</div>
+                <div><input type="radio" name="radio-sort" (click)="downToUp()"> Menor a mayor</div>
+                <div><input type="radio" name="radio-sort" (click)="upToDown()"> Mayor a menor</div>
             </div>
             <div class="search-type range-price">
                 <p>Rango de precio:</p>            
@@ -19,14 +19,14 @@
                     <span class="min-range">Min:{{minPrice}}</span>
                     <span class="max-range">Máx:{{maxPrice}}</span>
                 </p>
-                <mat-slider class="mat-slide-class" min="{{minPrice}}" max="{{maxPrice}}">
-                    <input id="min-range" value="{{minPrice}}" matSliderStartThumb  (input)="updateMinRange()">
-                    <input id="max-range" value="{{maxPrice}}" matSliderEndThumb  (input)="updateMaxRange()">
+                <mat-slider class="mat-slide-class" min="{{minPrice}}" max="{{maxPrice}}" (mouseup)="updateMinRange()" (mouseup)="updateMaxRange()" (click)="updateListRange()">
+                    <input id="min-range" class="dtu" value="{{minPrice}}" matSliderStartThumb  (input)="updateMinRange()">
+                    <input id="max-range" class="utd" value="{{maxPrice}}" matSliderEndThumb  (input)="updateMaxRange()">
                 </mat-slider>          
             </div>
             <div class="search-type sort-by-brand">
                 <p>Marca:</p>
-                <div *ngFor="let brand of brands"><input type="checkbox"> {{brand}}</div>
+                <div *ngFor="let brand of brands"><input type="checkbox" class="brand-{{brand}}" (click)="detectChangesBrandCheckbox(brand)"> {{brand}}</div>
             </div>
         </div>  
     </div>

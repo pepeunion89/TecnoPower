@@ -2,52 +2,58 @@
     <div class="title">
         <h1>NUEVO PRODUCTO</h1>
     </div>
-    <div class="nameDiv">
-        <span>Producto</span>
-        <input type="text" class="name">
-    </div>
-    <div class="codebarDiv">
-        <span>Código de barra</span>
-        <input type="text" class="codebar">
-    </div>
-    <div class="priceDiv">
-        <span>Precio</span>
-        <input type="text" class="price">
-    </div>
-    <div class="tagsDiv">
-        <span>Características</span>
-        <input type="text" class="tag">
-        <button class="addTagButton">></button>
-        <button>Seleccionar...</button>
-    </div>
-    <div class="imgDiv">
-        <span>URL Foto</span>
-        <input type="text" class="img">
-    </div>
-    <div class="categoryDiv">
-        <span>Categoría</span>
-        <input type="text" class="category">
-        <select class="selectedCategory" name="" id=""></select>
-        <input type="checkbox">
-    </div>
-    <div class="makerDiv">
-        <span>Fabricante</span>
-        <input type="text" class="maker">
-        <select class="selectedMaker" name="" id=""></select>
-        <input type="checkbox">
-    </div>
-    <div class="provDiv">
-        <span>Proveedor</span>
-        <input type="text" class="codeprov">
-        <select class="selectedProv" name="" id=""></select>
-        <input type="checkbox">
-    </div>
-    <div class="descriptionDiv">
-        <span>Descripción</span>
-        <textarea name="" id="" cols="30" rows="10" class="description"></textarea>
-    </div>
-    <div class="saveDiv">
-        <button class="cancel">Cancelar</button>
-        <button class="save">Guardar</button>
-    </div>
+    <form (ngSubmit)="saveProduct()">
+        <div class="nameDiv">
+            <span>Producto</span>
+            <input type="text" class="name" name="name" [(ngModel)]="product.product_name">
+        </div>
+        <div class="priceDiv">
+            <span>Precio</span>
+            <input type="number" class="price" name="price" [(ngModel)]="product.price">
+        </div>
+        <div class="tagsDiv">
+            <span>Características</span>
+            <input type="text" class="tag">
+            <button class="addTagButton">></button>
+            <button>Seleccionar...</button>
+        </div>
+        <div class="imgDiv">
+            <span>URL Foto</span> 
+            <input type="text" class="img" name="img_url" [(ngModel)]="product.img_url">
+        </div>
+        <div class="categoryDiv">
+            <span>Categoría</span>
+            <select class="selectedCategory" name="" id="">
+                <option class="categoryOptionSelected"
+                        value="{{category.id}}" 
+                        *ngFor="let category of categoriesList"
+                        name="category">
+                {{category.category_name}}</option>
+            </select>
+        </div>
+        <div class="makerDiv">
+            <span>Fabricante</span>
+            <select class="selectedMaker" name="" id="">
+                <option class="makerOptionSelected"
+                        value="{{maker.id}}" 
+                        *ngFor="let maker of makersList"
+                        name="maker">
+                {{maker.maker_name}}</option>
+            </select>
+            <button>+ Nuevo fabricante</button>
+        </div>
+        <div class="colorDiv">
+            <span>Colores</span>
+            <select class="selectedColor" name="" id=""></select>
+            <button>+ Nuevo color</button>
+        </div>
+        <div class="descriptionDiv">
+            <span>Descripción</span>
+            <textarea name="" id="" cols="30" rows="10" class="description" name="description" [(ngModel)]="product.description"></textarea>
+        </div>
+        <div class="saveDiv">
+            <button type="button" class="cancel" (click)="exit()">Cancelar</button>
+            <button type="submit" class="save">Guardar</button>
+        </div>
+    </form>
 </div>

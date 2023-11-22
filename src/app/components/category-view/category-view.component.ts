@@ -9,6 +9,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { CartService } from 'src/app/services/cart.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule  } from '@angular/material/table';
+import { filter } from 'rxjs';
 
 
 @Component({
@@ -27,6 +28,11 @@ export class CategoryViewComponent {
   minPrice: number = 0;
   maxPrice: number = 0;
   cartList: any[] = [];
+  minGlobal = 0;
+  maxGlobal = 0;
+  product_list_fixed: Products[]=[];
+  filteredCheckBrand: any[]=[];
+  brandFlag = 0;
 
   // Lógica para la paginación
   itemsPerPage: number = 10;
@@ -62,11 +68,15 @@ export class CategoryViewComponent {
    updateMinRange(){
     let min = document.getElementById('min-range')?.getAttribute('aria-valuetext');
     document.getElementsByClassName('min-range')[0].innerHTML = "Min: $"+String(min);
+
+    this.minGlobal = Number(min);
    } 
 
    updateMaxRange(){
     let max = document.getElementById('max-range')?.getAttribute('aria-valuetext');
     document.getElementsByClassName('max-range')[0].innerHTML = "Máx: $"+String(max);
+
+    this.maxGlobal = Number(max);
   } 
 
   // END RANGE SORT
@@ -89,6 +99,7 @@ export class CategoryViewComponent {
 
       this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1])).subscribe(
         (filteredProducts: Products[]) => {
+          this.product_list_fixed = filteredProducts;
           this.products_list = filteredProducts;
           this.loadBrands();
           this.minAndMaxPrice();
@@ -212,6 +223,108 @@ export class CategoryViewComponent {
       );
 
     }
+
+  }
+
+  // FUNCIONES DE FILTRO DE MENOR A MAYOR Y VICEVERSA
+  downToUp(){
+
+    this.cdr.detectChanges();
+
+    this.products_list.sort((a,b)=>{
+      if(a.price> b.price){
+        return 1;
+      }
+      if(b.price> a.price){
+        return -1;
+      }
+      return 0;
+    });
+
+    this.loadBrands();
+
+  }
+
+  upToDown(){
+    
+    this.cdr.detectChanges();
+
+    this.products_list.sort((a,b)=>{
+      if(a.price> b.price){
+        return -1;
+      }
+      if(b.price> a.price){
+        return 1;
+      }
+      return 0;
+    });
+
+    this.loadBrands();
+
+  }
+
+  // FUNCION DE FILTRO UPDATE RANGE
+
+  updateListRange(){
+
+    this.cdr.detectChanges();
+
+    this.products_list=this.product_list_fixed.filter((product)=>{
+      return product.price>=this.minGlobal && product.price<=this.maxGlobal;
+    });
+
+    let dtu = document.getElementsByClassName('dtu')[0] as HTMLInputElement;
+    let utd = document.getElementsByClassName('utd')[0] as HTMLInputElement;
+
+    if(dtu.checked){
+      this.downToUp();
+      alert("ACA SI PASA");
+    }
+    if(utd.checked){
+      this.upToDown();
+      alert("PASA GATO");
+    }
+
+    this.loadBrands();
+
+   
+  }
+
+  detectChangesBrandCheckbox(brand: string){
+
+    this.cdr.detectChanges();
+
+    let brandSelector = document.getElementsByClassName('brand-'+brand)[0] as HTMLInputElement;
+
+    if(brandSelector.checked){
+      this.filteredCheckBrand.push(brand);
+    }
+    
+    if(!brandSelector.checked){
+      this.filteredCheckBrand.splice(this.filteredCheckBrand.indexOf(brand),1);
+      console.log("Ingreso luego de descheckear!");
+    }
+
+    console.log(this.filteredCheckBrand);
+
+    this.products_list = [];
+    for(let product of this.product_list_fixed){
+
+      for(let brandIdx of this.filteredCheckBrand){
+        if(product.maker.maker_name===brandIdx){
+          this.products_list.push(product);
+        }
+      } 
+
+      if(this.filteredCheckBrand.length===0){
+        
+        this.products_list=this.product_list_fixed;
+        //this.updateListRange();
+      }
+      
+    }
+
+
 
   }
 

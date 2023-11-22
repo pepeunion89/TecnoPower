@@ -21,6 +21,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProductViewComponent } from './components/add-product-view/add-product-view.component';
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { AddProductViewComponent } from './components/add-product-view/add-produ
     MatPaginatorModule,
     MatTableModule 
   ],
-  providers: [],
+  providers: [DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

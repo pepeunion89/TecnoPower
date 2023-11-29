@@ -13,13 +13,21 @@ export class ProductsServiceService {
 
 /*  ESTO HAY QUE IMPLEMENTARLO CUANDO HAGAMOS LAS SOLICITUDES A LA API ------------- */
 
-  private apiServerUrl = 'https://corsproxy.io/?'+encodeURIComponent('https://fastapi-tecno.onrender.com');
+  //private apiServerUrl = 'https://corsproxy.io/?'+encodeURIComponent('https://fastapi-tecno.onrender.com');
   //private apiServerUrl = 'https://fastapi-tecno.onrender.com';
+  private apiServerUrl: string;
+  private apiUrl: string;
+  
+  constructor(private http: HttpClient) { 
 
-  constructor(private http: HttpClient) { }
+    this.apiServerUrl = environment.apiBaseUrl;
+    this.apiUrl = 'api/productos/';
+
+  }
 
   public getProducts():Observable<Products[]>{
-    return this.http.get<Products[]>(`${this.apiServerUrl}/get_products`);
+    //return this.http.get<Products[]>(`${this.apiServerUrl}/get_products`);
+    return this.http.get<Products[]>(`${this.apiServerUrl}${this.apiUrl}`)
   }  
  
   public getProductsFiltered(categoryId: number): Observable<Products[]> {

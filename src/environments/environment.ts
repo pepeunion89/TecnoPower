@@ -1,7 +1,9 @@
 export const environment = {
 
-        production: true,  
-        apiBaseUrl: 'https://fastapi-tecno.onrender.com'
-        //apiBaseUrl: 'http://localhost:8000'
+        production: false,  
+        apiBaseUrl: 'http://localhost:3000/'
+        //apiBaseUrl: 'https://fastapi-tecno.onrender.com'
+
+        //CON Express y Sequelize
     
 };

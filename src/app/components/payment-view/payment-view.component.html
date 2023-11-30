@@ -15,7 +15,7 @@
                 <div class="quantityPlus quantityPlus-{{item.id_product}}" (click)="increaseQuantity('quantityNumber-'+item.id_product)">+</div>
             </div>
             <div class="price">
-                <p>${{item.price | numberFormat}}</p>
+                <p>{{item.price | currency}}</p>
             </div>
             <div class="trashContainer">
                 <img src="../../../assets/images/crud-remove.png" alt="" (click)="removeItem(item.id_product)">
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="totalDiv">
-            Total: $ <span>{{total | numberFormat}}</span>
+            Total: <span>{{total | currency}}</span>
         </div>
     </div>
     <div class="payButtonContainer" *ngIf="flagView===1">

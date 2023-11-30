@@ -16,7 +16,7 @@ export class ProductsServiceService {
   //private apiServerUrl = 'https://corsproxy.io/?'+encodeURIComponent('https://fastapi-tecno.onrender.com');
   //private apiServerUrl = 'https://fastapi-tecno.onrender.com';
   private apiServerUrl= environment.apiBaseUrl;
-  private apiUrl= 'api/productos/';
+  private apiUrl= 'api/products/';
   
   constructor(private http: HttpClient) { }
 
@@ -39,7 +39,8 @@ export class ProductsServiceService {
 
   public addProduct(product: ProductsApi):Observable<ProductsApi>{
 
-    return this.http.post<ProductsApi>(`${this.apiServerUrl}/new_product`, product);
+    //return this.http.post<ProductsApi>(`${this.apiServerUrl}/new_product`, product);
+    return this.http.post<ProductsApi>(`${this.apiServerUrl}${this.apiUrl}`, product);
 
   }
 

@@ -8,13 +8,10 @@ export interface Products {
     product_name: string;
     img_url: string;
     price: number;
-    code_bar: number;
-    code_prov: string;
     stock: number;
     description: string;
     category: Categories;
     tags: Tags[];
     maker: Makers;
-    supplier_id: number;
 
 }

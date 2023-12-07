@@ -1,4 +1,4 @@
-.add-product-container{
+.add-product-container, .addMakerContainer{
 
     width: 500px;
     height: 630px;
@@ -22,158 +22,325 @@
 
     }
 
-    div{
+    form{
+        margin-top: 1rem;
+        
+        .nameDiv, .tagsDiv, .imgDiv, .categoryDiv,
+        .makerDiv, .colorDiv, .descriptionDiv, .requiredFieldsDiv,
+        .saveDiv{
 
-        display: flex;
-        margin-bottom: 1rem;
-        box-shadow: 0 0 5px black;
+            display: flex;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 5px black;
 
-        span{
+            span{
+                min-width: 125px;
+                background-color: rgb(58, 75, 94);
+                color: white;
+                text-align: left;
+                padding-left: 0.5rem;
+                font-size: 1rem;
+                line-height: 2rem;
+            }          
 
-            min-width: 125px;
-            background-color: rgb(58, 75, 94);
-            color: white;
-            text-align: left;
-            padding-left: 0.5rem;
-            font-size: 1rem;
-            line-height: 2rem;
+            input, textarea{
+
+                width: 73%;
+                padding-left: 1rem;
+                padding-right: 1rem;
+
+            }
+
+            input {
+
+                border: none;
+                border-bottom: 1px solid rgb(228, 228, 228);
+                //background-color: rgb(240, 240, 240);
+            
+                &:focus {
+                border-bottom: 1px solid gray;
+                }
+            
+                &:active {
+                border-bottom: 1px solid gray;
+                }
+            }
+
+            textarea{
+
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+                border-top: none;
+                //border-left: none;
+                border-color: rgb(228, 228, 228);
+                //background-color: rgb(240, 240, 240);
+                height: 100px;
+                resize: none;
+                width: 74%;
+
+            }
+
+            .selectedCategory{
+                width: 100%;
+                padding-left: 0.5rem;
+            }
 
         }
 
-        input, textarea{
-
-            width: 73%;
-            padding-left: 1rem;
-            padding-right: 1rem;
-
-        }
-
-        input {
-
+        .priceDiv{
             border: none;
-            border-bottom: 1px solid rgb(228, 228, 228);
-            //background-color: rgb(240, 240, 240);
-          
-            &:focus {
-              border-bottom: 1px solid gray;
+            box-shadow: none;
+            display: flex;
+            margin-bottom: 1rem;
+
+            span{
+                background-color: rgb(58, 75, 94);
+                color: white;
+                text-align: left;
+                padding-left: 0.5rem;
+                font-size: 1rem;
+                line-height: 2rem;
+                box-shadow: 0 0 5px black;
             }
-          
-            &:active {
-              border-bottom: 1px solid gray;
+
+            .price-span{
+                min-width: 125px;
+                box-shadow: 0 0 5px black;
+            }   
+
+            .stock-span{
+                margin-left: 1rem;
+                width: 100px;
+                box-shadow: 0 0 5px black;
             }
-        }
 
-        textarea{
+            .price{
+                box-shadow: 0 0 5px black;
+            }
 
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-            border-top: none;
-            //border-left: none;
-            border-color: rgb(228, 228, 228);
-            //background-color: rgb(240, 240, 240);
-            height: 100px;
-            resize: none;
-            width: 74%;
+            .stock{
+                width: 50px;
+                box-shadow: 0 0 5px black;
+            }
 
         }
 
-        .selectedCategory{
-            width: 100%;
-            padding-left: 0.5rem;
+        // Diseño individual por input
+        .tagsDiv{
+
+            button{
+                width: 100%; 
+                border: none;
+                color: white;
+                background-color: lightblue;
+            }
+
         }
+
+        .makerDiv, .colorDiv{
+
+            input[type=text]{
+                width: 148px;
+            }
+
+            input[type=checkbox]{
+                width: 15px;
+                height: 15px;
+            }
+
+            select{
+                width: 40%;
+                padding-left: 0.5rem;
+            }
+
+            button{
+                width: 171px;
+                //margin-left: 5px;
+                border: none;
+                color: white;
+                background-color: lightblue;
+            }
+
+            .addTagButton{
+                margin-left: 0px;
+                background-color: green;
+                width: 25px;
+            }
+
+        }
+
+        .colorDiv{
+
+            .colorSelectorEnableContainer{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+                height: 60px;
+                margin-bottom: 0;
+
+                .colorSelectorContainer, .colorEnableContainer, .colorNameContainer{
+                    display: flex;
+                    justify-content: space-around;
+                    width: 100%;
+                    height: 18px;
+                    margin-bottom: 0;
+                    box-shadow: none;
+        
+                    input[type="color"]{
+                        width: 13.5%;
+                        height: 80%;
+                        border: none;
+                        align-self: center;
+                    }
+
+                    input[type="checkbox"]{
+                        width: 15%;
+                        height: 80%;
+                        border: none;
+                    }
+
+                    input[type="text"]{
+                        width: 60px;
+                        height: 80%;
+                        padding-left: 0.5rem;
+                        padding-right: 0.5rem;
+                        border: none;
+                        align-self: center;
+                        border: 1px solid gray;
+                        font-size: 0.7rem;
+                    }
+
+        
+                }
+
+                .colorNameContainer{
+                    height: 27px;
+                }
+                
+            }
+
+        }
+
+        .requiredFieldsDiv{
+            display: none;
+            font-size: 0.8rem; 
+            margin-top: 0.4rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .saveDiv{
+
+                justify-content: flex-end;
+                box-shadow: none;
+
+                button{
+
+                    width: 150px;
+                    height: 40px;
+                    border: none;
+                    color: white;
+
+                }
+
+                .cancel{
+                    background-color: red;
+                    margin-right: 0.5rem;
+                }
+
+                .save{
+                    background-color: rgb(0, 192, 0);
+                }
+
+            }
 
     }
 
-    // Diseño individual por input
 
-    .tagsDiv, .makerDiv, .colorDiv{
-
-        input[type=text]{
-            width: 148px;
-        }
-
-        input[type=checkbox]{
-            width: 15px;
-            height: 15px;
-        }
-
-        select{
-            width: 40%;
-            padding-left: 0.5rem;
-        }
-
-        button{
-            width: 171px;
-            //margin-left: 5px;
-            border: none;
-            color: white;
-            background-color: lightblue;
 }
 
-        .addTagButton{
-            margin-left: 0px;
-            background-color: green;
-            width: 25px;
-        }
+.selectTagsContainer, .addMakerContainer{
+    display: none;
+}
 
-    }
 
-    .colorDiv{
 
-        .colorSelectorEnableContainer{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+
+
+
+// ADD MAKER CONTAINER
+.addMakerContainer{
+
+    width: 500px;
+    height: 200px;
+    padding: 1rem;
+    background-color: rgb(238, 238, 238);
+
+    .title{
+        background-color: rgb(58, 75, 94);
+        color: white;
+        padding-left: 1rem;
+        width: 100%;
+        height: 4rem;
+
+        h1{
             width: 100%;
-            height: 60px;
-            margin-bottom: 0;
-
-            .colorSelectorContainer, .colorEnableContainer, .colorNameContainer{
-                display: flex;
-                justify-content: space-around;
-                width: 100%;
-                height: 18px;
-                margin-bottom: 0;
-                box-shadow: none;
-    
-                input[type="color"]{
-                    width: 13.5%;
-                    height: 80%;
-                    border: none;
-                    align-self: center;
-                }
-
-                input[type="checkbox"]{
-                    width: 15%;
-                    height: 80%;
-                    border: none;
-                }
-
-                input[type="text"]{
-                    width: 60px;
-                    height: 80%;
-                    padding-left: 0.5rem;
-                    padding-right: 0.5rem;
-                    border: none;
-                    align-self: center;
-                    border: 1px solid gray;
-                    font-size: 0.7rem;
-                }
-
-    
-            }
-
-            .colorNameContainer{
-                height: 27px;
-            }
-            
+            margin: 0px;
+            font-size: 2rem;
+            line-height: 4rem;
+            text-align: center;
         }
 
     }
 
-    
+    form{
+        margin-top: 1rem;
+        
+        div{
 
-    .saveDiv{
+            display: flex;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 5px black;
+
+            span{
+
+                min-width: 125px;
+                background-color: rgb(58, 75, 94);
+                color: white;
+                text-align: left;
+                padding-left: 0.5rem;
+                font-size: 1rem;
+                line-height: 2rem;
+
+            }
+
+            input{
+
+                width: 73%;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                border: none;
+                border-bottom: 1px solid rgb(228, 228, 228);
+                //background-color: rgb(240, 240, 240);
+            
+                &:focus {
+                border-bottom: 1px solid gray;
+                }
+            
+                &:active {
+                border-bottom: 1px solid gray;
+                }
+            }
+        }
+
+        .requiredFieldsDiv{
+            display: none;
+            font-size: 0.8rem; 
+            margin-top: 0.4rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .saveDiv{
 
             justify-content: flex-end;
             box-shadow: none;
@@ -199,5 +366,205 @@
         }
 
 
-
+    }
 }
+
+
+
+
+// ADD TAGS CONTAINER
+.selectTagsContainer{
+
+    width: 500px;
+    height: 400px;
+    padding: 1rem;
+    background-color: rgb(238, 238, 238);
+
+    .title{
+        background-color: rgb(58, 75, 94);
+        color: white;
+        padding-left: 1rem;
+        width: 100%;
+        height: 4rem;
+
+        h1{
+            width: 100%;
+            margin: 0px;
+            font-size: 2rem;
+            line-height: 4rem;
+            text-align: center;
+        }
+
+    }
+
+    form{
+        margin-top: 1rem;
+        
+        div{
+
+            display: flex;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 5px black;
+
+            span{
+
+                min-width: 125px;
+                background-color: rgb(58, 75, 94);
+                color: white;
+                text-align: left;
+                padding-left: 0.5rem;
+                font-size: 1rem;
+                line-height: 2rem;
+
+            }
+
+            input{
+
+                width: 73%;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                border: none;
+                border-bottom: 1px solid rgb(228, 228, 228);
+                //background-color: rgb(240, 240, 240);
+            
+                &:focus {
+                border-bottom: 1px solid gray;
+                }
+            
+                &:active {
+                border-bottom: 1px solid gray;
+                }
+            }
+        }
+
+        .requiredFieldsDiv{
+            display: none;
+            font-size: 0.8rem; 
+            margin-top: 0.4rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .saveDiv{
+
+            justify-content: flex-end;
+            box-shadow: none;
+            bottom: 0px;
+
+            button{
+
+                width: 150px;
+                height: 40px;
+                border: none;
+                color: white;
+
+            }
+
+            .cancel{
+                background-color: red;
+                margin-right: 0.5rem;
+            }
+
+            .tag_name, .tag_detail{
+                border-top: 1px solid rgb(58, 75, 94);                
+                border-bottom: 1px solid rgb(58, 75, 94);
+                padding: 0.5rem;
+            }
+
+            .save, .saveTagAdded{
+                background-color: rgb(0, 192, 0);
+            }
+
+            .saveTagAdded{
+                height: 42.17px;
+            }
+
+            
+
+        }       
+
+
+    }
+
+    .selectTagsPanelSection{
+        display: flex;
+        flex-direction: column;
+        height: 240px;
+
+        .selectTagTitle{
+            display: flex;
+            background-color: rgb(58, 75, 94);
+            color: white;
+            height: 2rem;
+            line-height: 2rem;
+            padding-left: 0.5rem;
+            margin-bottom: 0px;
+            align-items: center;
+
+            input{
+                margin-left: auto;
+                margin-right: 0.3rem;
+                height: 1.5rem;
+                text-indent: 0.5rem;
+            }
+
+        }
+
+        .tagsList{
+            display: flex;
+            flex-direction: column;
+            max-height: 160px;
+            background-color: lightgray;
+            overflow-y: scroll;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: flex-start;
+            border: none;
+            box-shadow: none;
+
+            .tagItem{
+                display: flex;
+                width: 98%;
+                height: 2rem;
+                margin: 0 0 0 0.35rem;
+                border: none;
+                box-shadow: none;
+                overflow: hidden;
+
+                .chkTag{
+                    max-width: 1rem;
+                    min-width: 1rem;
+                    font-size: 1rem;
+                    text-indent: 0.5rem;
+                    margin-right: 0.2rem;
+                    height: 80%;
+                }
+
+                p{
+                    margin: 0px;
+                    margin-left: 0.2rem;
+                    line-height: 32px;
+
+                    span{
+                        color: rgb(107, 107, 107);
+                        background-color: transparent; 
+                        margin: 0px;
+                        margin-left: 0.2rem;
+                        line-height: 32px;
+                        padding-left: 0px;
+                        font-weight: bold;
+                    }
+
+                }
+            }
+
+        }
+
+        .saveDiv{
+            margin-top: auto;
+            margin-bottom: 0px;
+        }
+
+    }
+}
+
+

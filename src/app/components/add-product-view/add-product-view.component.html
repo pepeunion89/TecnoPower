@@ -8,14 +8,14 @@
             <input type="text" class="name" name="name" [(ngModel)]="product.product_name">
         </div>
         <div class="priceDiv">
-            <span>Precio</span>
+            <span class="price-span">Precio</span>
             <input type="number" class="price" name="price" [(ngModel)]="product.price">
+            <span class="stock-span">Stock</span>
+            <input type="number" class="stock" name="stock" [(ngModel)]="product.stock">
         </div>
         <div class="tagsDiv">
             <span>Características</span>
-            <input type="text" class="tag">
-            <button class="addTagButton">></button>
-            <button>Seleccionar...</button>
+            <button (click)="showTagsPanel()">Seleccionar...</button>
         </div>
         <div class="imgDiv">
             <span>URL Foto</span> 
@@ -40,7 +40,7 @@
                         name="maker">
                 {{maker.maker_name}}</option>
             </select>
-            <button>+ Nuevo fabricante</button>
+            <button (click)="showAddMaker()">+ Nuevo fabricante</button>
         </div>
         <div class="colorDiv">
             <span>Colores</span>            
@@ -49,7 +49,7 @@
                     <input type="text" class="colorName-{{number}}" disabled *ngFor="let number of colorNumbers"> 
                 </div>
                 <div class="colorSelectorContainer">
-                    <input type="color" class="color-{{number}}" disabled *ngFor="let number of colorNumbers"> 
+                    <input type="color" class="colorHex-{{number}}" disabled *ngFor="let number of colorNumbers"> 
                 </div>     
                 <div class="colorEnableContainer">
                     <input type="checkbox" class="enableColor-{{number}}" (click)="eodColor(number)" *ngFor="let number of colorNumbers">
@@ -60,9 +60,73 @@
             <span>Descripción</span>
             <textarea name="" id="" cols="30" rows="10" class="description" name="description" [(ngModel)]="product.description"></textarea>
         </div>
+        <span class="requiredFieldsDiv">
+            <b style="color: red;">*Campos obligatorios:</b> Producto, Precio, Características, Descripción.
+        </span>
         <div class="saveDiv">
             <button type="button" class="cancel" (click)="exit()">Cancelar</button>
             <button type="submit" class="save">Guardar</button>
         </div>
     </form>
 </div>
+
+<!-- ACA COLOCAMOS LAS VISTAS DE:  --------------------------------------------------------------------
+     AGREGAR FABRICANTE
+-->
+
+<div class="addMakerContainer" style="display: none;">
+    <div class="title">
+        <h1>NUEVO FABRICANTE</h1>
+    </div>
+    <form (ngSubmit)="saveMaker()">
+        <div class="nameDiv">
+            <span>Nombre</span>
+            <input type="text" class="name" name="name" >
+            <!-- [(ngModel)]="product.product_name" -->
+        </div>
+        <span class="requiredFieldsDiv">
+            <b style="color: red;">*Campos obligatorios:</b> Producto, Precio, Características, Descripción.
+        </span>
+        <div class="saveDiv">
+            <button type="button" class="cancel" (click)="exitMaker()">Cancelar</button>
+            <button type="submit" class="save">Guardar</button>
+        </div>
+    </form>
+</div>
+
+
+
+<!-- ACA COLOCAMOS LAS VISTAS DE: ---------------------------------------------------------------------
+     SELECCIONAR CARACTERISTICAS 
+-->
+
+<div class="selectTagsContainer">
+    <div class="title">
+        <h1>PANEL CARACTERÍSTICAS</h1>
+    </div>
+    <form class="newTagPanelSection" action="">
+        <div class="saveDiv">
+            <span>Característica</span>
+            <input type="text" class="tag_name" name="name" placeholder="Etiqueta...">
+            <input type="text" class="tag_detail" placeholder="Detalle...">
+            <button type="submit" class="saveTagAdded">Agregar</button>
+            <!-- [(ngModel)]="product.product_name" -->
+        </div>
+    </form>
+    <form class="selectTagsPanelSection" action="">
+        <p class="selectTagTitle">Seleccione características <input type="text" placeholder="Buscar..."></p>
+        <div class="tagsList">
+            <div class="tagItem" *ngFor="let tag of tagsList">
+                <input class="chkTag" type="checkbox">                
+                <p><span>{{tag.tag_name}}: </span>{{tag.tag_detail}}</p>
+            </div>
+        </div>   
+        <div class="saveDiv">
+            <button type="button" class="cancel" (click)="exitTags()">Cancelar</button>
+            <button type="submit" class="save">Guardar</button>
+        </div>
+    </form>
+</div>
+
+
+

@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
-import { Products } from 'src/app/models/products';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogsComponent } from '../dialogs/dialogs.component';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductsApi } from 'src/app/models/product-api';
 
 @Component({
   selector: 'app-container',
@@ -13,7 +13,7 @@ import { CartService } from 'src/app/services/cart.service';
 export class ContainerComponent {
 
   @Input() receivedProductsList: any[] = [];
-  products_list: Products[]=[];
+  products_list: ProductsApi[]=[];
   cartList: any[] = [];
 
 
@@ -56,14 +56,18 @@ export class ContainerComponent {
 
     this.cdr.detectChanges();
 
-    this.products_service.getProducts().subscribe(
-      (products: Products[]) => {
+    this.products_service.getProducts().subscribe({
+      next:(products: ProductsApi[]) => {
         this.products_list = products;
+        console.log(this.products_list);
       },
-      (error) => {
+      error:(error) => {
         console.error('Error fetching products:', error);
+      },
+      complete: ()=>{
+        console.log('Products fetched successfully');        
       }
-    );
+    });
     this.cartList = this.cartService.getCartList();
 
   }
@@ -76,9 +80,9 @@ export class ContainerComponent {
 
   }
 
-  openDialog(product: Products) {
+  openDialog(product: ProductsApi) {
     let dialogRef: MatDialogRef<DialogsComponent>;
-    let data : Products = product;
+    let data : ProductsApi = product;
     dialogRef = this.dialog.open(DialogsComponent, { data, panelClass: 'custom-dialog-container'});
 
     return dialogRef.afterClosed();

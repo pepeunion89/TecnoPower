@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Products } from 'src/app/models/products';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
 import { DialogsComponent } from '../dialogs/dialogs.component';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,6 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule  } from '@angular/material/table';
 import { filter } from 'rxjs';
+import { ProductsApi } from 'src/app/models/product-api';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class CategoryViewComponent {
 
   searchInputDisplay: string = 'none';
 
-  products_list: Products[]=[];
+  products_list: ProductsApi[]=[];
   categoryNameAndId: string = "";
   brands:any[] = [];
   prices:number[] = [];
@@ -30,7 +30,7 @@ export class CategoryViewComponent {
   cartList: any[] = [];
   minGlobal = 0;
   maxGlobal = 0;
-  product_list_fixed: Products[]=[];
+  product_list_fixed: ProductsApi[]=[];
   filteredCheckBrand: any[]=[];
   brandFlag = 0;
 
@@ -97,8 +97,8 @@ export class CategoryViewComponent {
       this.categoryNameAndId = params['category'].split("-",2);
       //alert(this.categoryNameAndId);
 
-      this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1])).subscribe(
-        (filteredProducts: Products[]) => {
+      this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1])).subscribe({
+        next:(filteredProducts: ProductsApi[]) => {
           this.product_list_fixed = filteredProducts;
           this.products_list = filteredProducts;
           this.loadBrands();
@@ -108,10 +108,10 @@ export class CategoryViewComponent {
           (document.getElementsByClassName('min-range')[0] as HTMLElement).innerHTML="Min: $"+String(this.minPrice);
           (document.getElementsByClassName('max-range')[0] as HTMLElement).innerHTML="Máx: $"+String(this.maxPrice);
         },
-        (error) => {
+        error:(error) => {
           console.error('Error fetching filtered products:', error);
         }
-      );
+      });
       
       
       
@@ -139,9 +139,9 @@ export class CategoryViewComponent {
   }
 
 
-  openDialog(product: Products) {
+  openDialog(product: ProductsApi) {
     let dialogRef: MatDialogRef<DialogsComponent>;
-    let data : Products = product;
+    let data : ProductsApi = product;
     dialogRef = this.dialog.open(DialogsComponent, { data, panelClass: 'custom-dialog-container'});
     return dialogRef.afterClosed();
   }
@@ -203,7 +203,7 @@ export class CategoryViewComponent {
     if(!(inputValue==='')){
 
       this.products_service.getSearchProductsFilteredByCategory(inputValue, Number(this.categoryNameAndId[1])).subscribe(
-        (filteredProducts: Products[]) => {
+        (filteredProducts: ProductsApi[]) => {
           this.products_list = filteredProducts;
         },
         (error) => {
@@ -214,7 +214,7 @@ export class CategoryViewComponent {
     }else{
       
       this.products_service.getProductsFiltered(Number(this.categoryNameAndId[1])).subscribe(
-        (filteredProducts: Products[]) => {
+        (filteredProducts: ProductsApi[]) => {
           this.products_list = filteredProducts;
         },
         (error) => {

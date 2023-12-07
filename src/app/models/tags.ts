@@ -1,6 +1,7 @@
 export interface Tags {
 
-    tag_id: number,
-    tag_name: string
+    id: number,
+    tag_name: string,
+    tag_detail: string
 
 }

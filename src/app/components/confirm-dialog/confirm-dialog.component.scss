@@ -1,0 +1,27 @@
+.dialogContainer{
+    width: 300px;
+    min-height: 3rem;
+    background-color: rgb(58, 75, 94);    
+
+    h1{
+        font-size: 1.2rem;
+        text-align: center;
+        color: white;
+        padding: 1rem;
+        margin: 0;
+    }   
+
+}
+
+.buttonContainer{
+    display: flex;
+    height: 2rem;
+    justify-content: space-around;
+    align-items: center;
+
+    .deleteButton{
+        color:white;
+        background-color: red;
+    }
+
+}

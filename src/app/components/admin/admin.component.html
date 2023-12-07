@@ -15,12 +15,12 @@
                 <img src="{{product.img_url}}" alt="">
             </div>
             <div class="namePriceContainer">
-                <h3 class="productName">{{product.product_name}} </h3>
+                <h3 class="productName">{{product.product_name}}</h3>
                 <span>${{product.price | numberFormat}}</span>        
             </div>    
             <div class="editOrDelete">
                     <img src="../../../assets/images/crud-edit.png" alt="">
-                    <img src="../../../assets/images/crud-remove.png" alt="">
+                    <img src="../../../assets/images/crud-remove.png" alt="" (click)="deleteProduct(product)">
             </div>
         </div>        
     </div>

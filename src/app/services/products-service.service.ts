@@ -20,20 +20,20 @@ export class ProductsServiceService {
   
   constructor(private http: HttpClient) { }
 
-  public getProducts():Observable<Products[]>{
+  public getProducts():Observable<ProductsApi[]>{
     //return this.http.get<Products[]>(`${this.apiServerUrl}/get_products`);
-    return this.http.get<Products[]>(`${this.apiServerUrl}${this.apiUrl}`)
+    return this.http.get<ProductsApi[]>(`${this.apiServerUrl}${this.apiUrl}`);
   }  
  
-  public getProductsFiltered(categoryId: number): Observable<Products[]> {
+  public getProductsFiltered(categoryId: number): Observable<ProductsApi[]> {
     return this.getProducts().pipe(map(products => products.filter(product => product.category.id === categoryId)));
   }
 
-  public getSearchProductsFiltered(productName: string): Observable<Products[]> {
+  public getSearchProductsFiltered(productName: string): Observable<ProductsApi[]> {
     return this.getProducts().pipe(map(products => products.filter(product => product.product_name.toUpperCase().includes(productName.toUpperCase()))));
   }
   
-  public getSearchProductsFilteredByCategory(productName: string, category: number): Observable<Products[]> {
+  public getSearchProductsFilteredByCategory(productName: string, category: number): Observable<ProductsApi[]> {
     return this.getProductsFiltered(category).pipe(map(productsListFiltered => productsListFiltered.filter(product => product.product_name.toUpperCase().includes(productName.toUpperCase()))));
   }
 
@@ -44,6 +44,11 @@ export class ProductsServiceService {
 
   }
 
+  public deteleProduct(id_product: number):Observable<any>{
+
+    return this.http.delete(`${this.apiServerUrl}${this.apiUrl}${id_product}`);
+    
+  }
 
 
    /*------------------------------------------------------------------------------- */

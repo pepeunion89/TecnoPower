@@ -11,9 +11,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NumberFormatPipe } from './NumberFormatPipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogsComponent } from './components/dialogs/dialogs.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
 import { CategoryViewComponent } from './components/category-view/category-view.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { PaymentViewComponent } from './components/payment-view/payment-view.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -22,6 +22,11 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProductViewComponent } from './components/add-product-view/add-product-view.component';
 import { DecimalPipe } from '@angular/common';
+import { TagsViewComponent } from './components/tags-view/tags-view.component';
+import { MakerViewComponent } from './components/maker-view/maker-view.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,10 @@ import { DecimalPipe } from '@angular/common';
     CategoryViewComponent,
     PaymentViewComponent,
     AdminComponent,
-    AddProductViewComponent
+    AddProductViewComponent,
+    TagsViewComponent,
+    MakerViewComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +56,11 @@ import { DecimalPipe } from '@angular/common';
     BrowserAnimationsModule,
     MatSliderModule,
     MatPaginatorModule,
-    MatTableModule 
+    MatTableModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatButtonModule
   ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent]

@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
-import { Products } from 'src/app/models/products';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
+import { ProductsApi } from 'src/app/models/product-api';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,7 @@ export class HeaderComponent {
   @Output() sendProductsList = new EventEmitter<any[]>();
 
   cartList: any[] = [];
-  productsList: Products[] = [];
+  productsList: ProductsApi[] = [];
 
   constructor(private productsService: ProductsServiceService,
               private router: Router,
@@ -72,7 +72,7 @@ export class HeaderComponent {
     if(!(inputValue==='')){
 
       this.productsService.getSearchProductsFiltered(inputValue).subscribe(
-        (filteredProducts: Products[]) => {
+        (filteredProducts: ProductsApi[]) => {
           this.productsList = filteredProducts;
         },
         (error) => {
@@ -85,7 +85,7 @@ export class HeaderComponent {
     }else{
       
       this.productsService.getProducts().subscribe(
-        (products: Products[]) => {
+        (products: ProductsApi[]) => {
           this.productsList = products;
         },
         (error) => {

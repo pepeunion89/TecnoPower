@@ -1,0 +1,7 @@
+<div class="dialogContainer">
+    <h1>¿Eliminar {{data.product_name}}?</h1>    
+</div>
+<div class="buttonContainer" mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button class="deleteButton" mat-button [mat-dialog-close]="data.id" cdkFocusInitial>Eliminar</button>
+</div>

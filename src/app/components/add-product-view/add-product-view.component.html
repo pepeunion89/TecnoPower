@@ -1,4 +1,4 @@
-<div class="add-product-container">
+<div class="add-product-container" *ngIf="isVisibleProductPanel">
     <div class="title">
         <h1>NUEVO PRODUCTO</h1>
     </div>
@@ -74,7 +74,7 @@
      AGREGAR FABRICANTE
 -->
 
-<div class="addMakerContainer" style="display: none;">
+<div class="addMakerContainer" *ngIf="isVisibleMakerPanel">
     <div class="title">
         <h1>NUEVO FABRICANTE</h1>
     </div>
@@ -100,7 +100,7 @@
      SELECCIONAR CARACTERISTICAS 
 -->
 
-<div class="selectTagsContainer">
+<div class="selectTagsContainer" *ngIf="isVisibleTagsPanel">
     <div class="title">
         <h1>PANEL CARACTERÍSTICAS</h1>
     </div>
@@ -113,11 +113,11 @@
             <!-- [(ngModel)]="product.product_name" -->
         </div>
     </form>
-    <form class="selectTagsPanelSection" action="">
+    <form class="selectTagsPanelSection" (ngSubmit)="saveTag()">
         <p class="selectTagTitle">Seleccione características <input type="text" placeholder="Buscar..."></p>
         <div class="tagsList">
             <div class="tagItem" *ngFor="let tag of tagsList">
-                <input class="chkTag" type="checkbox">                
+                <input class="chkTag chkTag-{{tag.id}}" type="checkbox">                
                 <p><span>{{tag.tag_name}}: </span>{{tag.tag_detail}}</p>
             </div>
         </div>   

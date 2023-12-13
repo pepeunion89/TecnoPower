@@ -32,6 +32,11 @@ export class AddProductViewComponent {
   selectTagsPanel: any; 
   addMakerPanel: any; 
 
+  // Mostrar u Ocultar paneles con *ngIf
+  isVisibleProductPanel = true;
+  isVisibleMakerPanel = false;
+  isVisibleTagsPanel = false;
+
   constructor(private categoriesService: CategoriesServiceService,
               private productService: ProductsServiceService,
               private makersService: MakersServiceService,
@@ -143,9 +148,6 @@ export class AddProductViewComponent {
       this.descriptionDiv.style.marginBottom = "0px";
     }
 
-    // Vacios primero
-    this.product.tags=[];
-
     // Realiza el addProduct si cumple con las condiciones
     if(flag===0){
 
@@ -197,6 +199,8 @@ export class AddProductViewComponent {
           this.product.maker = maker;
         }
       }
+
+      console.log("EL PRODUCTO QUE ESPERAS ESTA ACA: ");
       console.log(this.product);
 
       this.productService.addProduct(this.product).subscribe(
@@ -231,16 +235,19 @@ export class AddProductViewComponent {
 
   // Mostrar panel de TAGS
   showTagsPanel(){
-    this.addProductPanel.style.display = 'none';
-    this.addMakerPanel.style.display = 'none';
-    this.selectTagsPanel.style.display = 'block';
+    
+    this.isVisibleMakerPanel = false;
+    this.isVisibleProductPanel = false;
+    this.isVisibleTagsPanel = true;
+
+    console.log(this.product.tags);
   }
 
   // Mostrar panel de MAKER
   showAddMaker(){
-    this.addProductPanel.style.display = 'none';
-    this.selectTagsPanel.style.display = 'none';
-    this.addMakerPanel.style.display = 'block';
+    this.isVisibleTagsPanel = false;
+    this.isVisibleProductPanel = false;
+    this.isVisibleMakerPanel = true;
   }
 
   exit(){
@@ -248,16 +255,11 @@ export class AddProductViewComponent {
   }
 
   exitMaker(){
-    this.addProductPanel.style.display = 'block';
-    this.addMakerPanel.style.display = 'none';
+    this.isVisibleMakerPanel = false;
+    this.isVisibleProductPanel = true;
   }
 
-  exitTags(){
-    this.addProductPanel.style.display = 'block';
-    this.selectTagsPanel.style.display = 'none';
-  }
-
-
+  
   // FUNCIONALIDADES PARA MAKER
 
   saveMaker(){
@@ -282,7 +284,24 @@ export class AddProductViewComponent {
   }
 
   saveTag(){
+    let productTags: Tags[] = [];
 
+    for(let tag of this.tagsList){
+      if((document.getElementsByClassName('chkTag-'+tag.id)[0] as HTMLInputElement).checked){
+        productTags.push(tag);
+      }
+    }
+
+    this.product.tags = productTags;
+
+    this.isVisibleTagsPanel = false;
+    this.isVisibleProductPanel = true;
+
+  }
+
+  exitTags(){
+    this.isVisibleTagsPanel = false;
+    this.isVisibleProductPanel = true;
   }
 
 

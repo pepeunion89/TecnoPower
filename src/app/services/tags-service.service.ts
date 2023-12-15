@@ -19,5 +19,8 @@ export class TagsServiceService {
     return this.http.get<Tags[]>(`${this.apiServerUrl}${this.apiUrl}`)
   }
   
+  public addTag(tag: Tags):Observable<Tags>{
+    return this.http.post<Tags>(`${this.apiServerUrl}${this.apiUrl}`, tag);
+  }
 
 }

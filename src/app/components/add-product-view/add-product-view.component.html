@@ -81,7 +81,7 @@
     <form (ngSubmit)="saveMaker()">
         <div class="nameDiv">
             <span>Nombre</span>
-            <input type="text" class="name" name="name" >
+            <input type="text" class="maker_name" name="maker_name" [(ngModel)]="newMaker.maker_name">
             <!-- [(ngModel)]="product.product_name" -->
         </div>
         <span class="requiredFieldsDiv">
@@ -104,11 +104,11 @@
     <div class="title">
         <h1>PANEL CARACTERÍSTICAS</h1>
     </div>
-    <form class="newTagPanelSection" action="">
+    <form class="newTagPanelSection" (ngSubmit)="addTag()">
         <div class="saveDiv">
             <span>Característica</span>
-            <input type="text" class="tag_name" name="name" placeholder="Etiqueta...">
-            <input type="text" class="tag_detail" placeholder="Detalle...">
+            <input type="text" class="tag_name" name="tag_name" placeholder="Etiqueta..." [(ngModel)]="newTag.tag_name">
+            <input type="text" class="tag_detail" name="tag_detail" placeholder="Detalle..." [(ngModel)]="newTag.tag_detail">
             <button type="submit" class="saveTagAdded">Agregar</button>
             <!-- [(ngModel)]="product.product_name" -->
         </div>
@@ -117,7 +117,7 @@
         <p class="selectTagTitle">Seleccione características <input type="text" placeholder="Buscar..."></p>
         <div class="tagsList">
             <div class="tagItem" *ngFor="let tag of tagsList">
-                <input class="chkTag chkTag-{{tag.id}}" type="checkbox">                
+                <input id="tag-{{tag.id}}" class="chkTag chkTag-{{tag.id}}" type="checkbox" >                
                 <p><span>{{tag.tag_name}}: </span>{{tag.tag_detail}}</p>
             </div>
         </div>   

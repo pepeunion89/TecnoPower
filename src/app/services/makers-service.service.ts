@@ -20,4 +20,8 @@ export class MakersServiceService {
     return this.http.get<Makers[]>(`${this.apiServerUrl}${this.apiUrl}`)
   }  
 
+  public addMaker(maker: Makers):Observable<Makers>{
+    return this.http.post<Makers>(`${this.apiServerUrl}${this.apiUrl}`, maker);
+  }
+
 }

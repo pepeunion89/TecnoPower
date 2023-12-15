@@ -1,10 +1,13 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, ChangeDetectorRef } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { Categories } from 'src/app/models/categories';
 import { Makers } from 'src/app/models/makers';
 import { ProductsApi } from 'src/app/models/product-api';
 import { Tags } from 'src/app/models/tags';
+import { TagsChecked } from 'src/app/models/tagsChecked';
 import { CategoriesServiceService } from 'src/app/services/categories-service.service';
 import { MakersServiceService } from 'src/app/services/makers-service.service';
 import { ProductsServiceService } from 'src/app/services/products-service.service';
@@ -23,6 +26,10 @@ export class AddProductViewComponent {
   makerSelected: any = "";  
   tagsList: Tags[] = [];            
   product: ProductsApi = {} as ProductsApi;
+  newTag: Tags = {} as Tags;
+  tagsChecked: TagsChecked[] = [];
+  tagsCheckedSaved: TagsChecked[] = [];
+  newMaker: Makers = {} as Makers;
   colorNumbers = [1,2,3,4,5];
   requiredFields: any;
   descriptionDiv: any;
@@ -44,13 +51,13 @@ export class AddProductViewComponent {
               private decimalPipe: DecimalPipe,
               private dialogRef: MatDialogRef<AddProductViewComponent>,
               private cdr: ChangeDetectorRef){
-
   }
 
   ngOnInit(){    
     this.cdr.detectChanges();
     this.product.price = 0;
     this.product.stock = 0;
+    this.product.tags = [];
     this.requiredFields = document.getElementsByClassName('requiredFieldsDiv')[0] as HTMLElement;
     this.descriptionDiv = document.getElementsByClassName('descriptionDiv')[0] as HTMLElement;
     this.addProductPanel = document.getElementsByClassName('add-product-container')[0] as HTMLElement;
@@ -240,7 +247,10 @@ export class AddProductViewComponent {
     this.isVisibleProductPanel = false;
     this.isVisibleTagsPanel = true;
 
-    console.log(this.product.tags);
+    
+    console.log(document.getElementsByClassName('selectTagsContainer')[0]);
+
+    this.loadTags();
   }
 
   // Mostrar panel de MAKER
@@ -263,7 +273,19 @@ export class AddProductViewComponent {
   // FUNCIONALIDADES PARA MAKER
 
   saveMaker(){
+    this.makersService.addMaker(this.newMaker).subscribe({
+      next: (response: Makers)=>{
+        console.log("Maker added successfully.");
+        console.log(response);
 
+        this.isVisibleMakerPanel = false;
+        this.isVisibleProductPanel = true;
+
+      },
+      error: (error:Error)=>{
+        console.log(error);
+      }
+    })
   }
 
   // FUNCIONALIDADES PARA TAGS
@@ -283,16 +305,37 @@ export class AddProductViewComponent {
     })
   }
 
+  loadTagsChecked(){
+
+      for(let tag of this.product.tags){
+
+        console.log(tag.id);
+
+        ((document.getElementsByClassName('chkTag-'+tag.id)[0]) as HTMLInputElement).checked = true;
+
+      }
+
+  }
+
   saveTag(){
     let productTags: Tags[] = [];
 
-    for(let tag of this.tagsList){
+    for(let tag of this.tagsChecked){
       if((document.getElementsByClassName('chkTag-'+tag.id)[0] as HTMLInputElement).checked){
-        productTags.push(tag);
+
+        let tagModel: Tags = {
+          id : tag.id,
+          tag_name : tag.tag_name,
+          tag_detail : tag.tag_detail
+        };
+        
+        productTags.push(tagModel);
       }
     }
 
     this.product.tags = productTags;
+
+    console.log(this.tagsChecked);
 
     this.isVisibleTagsPanel = false;
     this.isVisibleProductPanel = true;
@@ -302,6 +345,20 @@ export class AddProductViewComponent {
   exitTags(){
     this.isVisibleTagsPanel = false;
     this.isVisibleProductPanel = true;
+  }
+
+  addTag(){
+
+    this.tagService.addTag(this.newTag).subscribe({
+      next: (response: Tags)=>{
+        console.log("Tag added succesfully.");
+        console.log(response);
+      },
+      error: (error: Error)=>{
+        console.log(error);
+      }
+    })
+
   }
 
 

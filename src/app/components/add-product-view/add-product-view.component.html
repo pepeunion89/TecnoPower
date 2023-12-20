@@ -116,8 +116,8 @@
     <form class="selectTagsPanelSection" (ngSubmit)="saveTag()">
         <p class="selectTagTitle">Seleccione características <input type="text" placeholder="Buscar..."></p>
         <div class="tagsList">
-            <div class="tagItem" *ngFor="let tag of tagsList">
-                <input id="tag-{{tag.id}}" class="chkTag chkTag-{{tag.id}}" type="checkbox" >                
+            <div class="tagItem" *ngFor="let tag of tagsList; index as i">
+                <input id="tag-{{tag.id}}" class="chkTag chkTag-{{tag.id}}" type="checkbox" name="tag-{{tag.id}}" [(ngModel)]="tagsChecked[i]">                
                 <p><span>{{tag.tag_name}}: </span>{{tag.tag_detail}}</p>
             </div>
         </div>   

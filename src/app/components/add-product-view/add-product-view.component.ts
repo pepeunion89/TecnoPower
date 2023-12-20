@@ -1,6 +1,5 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Categories } from 'src/app/models/categories';
@@ -27,7 +26,7 @@ export class AddProductViewComponent {
   tagsList: Tags[] = [];            
   product: ProductsApi = {} as ProductsApi;
   newTag: Tags = {} as Tags;
-  tagsChecked: TagsChecked[] = [];
+  tagsChecked: boolean[] = [];
   tagsCheckedSaved: TagsChecked[] = [];
   newMaker: Makers = {} as Makers;
   colorNumbers = [1,2,3,4,5];
@@ -79,17 +78,7 @@ export class AddProductViewComponent {
   
 
     // Obtenemos listado de Fabricantes
-    this.makersService.getMakers().subscribe({
-      next:(makers: Makers[])=>{
-        this.makersList = makers;
-    },
-      error:(error)=>{
-        console.error('Error fetching makers:',error);
-    },
-      complete:()=>{
-        console.log('Fetching succesfull');
-    }
-  });
+  this.loadMakers();  
 
   // Obtenemos listado de Tags
   this.loadTags();
@@ -210,10 +199,20 @@ export class AddProductViewComponent {
       console.log("EL PRODUCTO QUE ESPERAS ESTA ACA: ");
       console.log(this.product);
 
-      this.productService.addProduct(this.product).subscribe(
-        ()=>{
-        alert("Producto agregado.");
-        this.exit();
+      this.productService.addProduct(this.product).subscribe({
+        next: (response)=>{
+          if (response.product!) {
+            // Es un objeto Product            
+            this.exit();
+          } else {
+            // Es un mensaje de error
+            console.log("Error al cargar producto. Verifique que no exista en la base de datos.");           
+            this.exit();
+          }          
+        },
+        error: (error)=>{
+          alert(error);
+        }        
       }) 
     }
   }
@@ -267,8 +266,9 @@ export class AddProductViewComponent {
   exitMaker(){
     this.isVisibleMakerPanel = false;
     this.isVisibleProductPanel = true;
-  }
 
+    this.newMaker.maker_name = "";
+  }
   
   // FUNCIONALIDADES PARA MAKER
 
@@ -281,11 +281,32 @@ export class AddProductViewComponent {
         this.isVisibleMakerPanel = false;
         this.isVisibleProductPanel = true;
 
+        this.loadMakers();
+
+        this.newMaker.maker_name = "";
+
       },
       error: (error:Error)=>{
         console.log(error);
       }
     })
+  }
+
+  loadMakers(){
+    this.makersService.getMakers().subscribe({
+      next:(makers: Makers[])=>{
+        this.makersList = makers;
+        this.makersList.sort((maker1, maker2)=>
+        maker1.maker_name.localeCompare(maker2.maker_name)
+        );
+    },
+      error:(error)=>{
+        console.error('Error fetching makers:',error);
+    },
+      complete:()=>{
+        console.log('Fetching succesfull');
+    }
+  });
   }
 
   // FUNCIONALIDADES PARA TAGS
@@ -294,6 +315,10 @@ export class AddProductViewComponent {
     this.tagService.getTags().subscribe({
       next:(tags: Tags[])=>{
         this.tagsList = tags;
+        this.tagsList.sort((tag1, tag2)=>
+          tag1.tag_name.localeCompare(tag2.tag_name)
+        );
+        this.tagsChecked.length = this.tagsList.length;
       },
       error:(error)=>{
         console.log("Error al obtener tags: ");
@@ -305,37 +330,25 @@ export class AddProductViewComponent {
     })
   }
 
-  loadTagsChecked(){
-
-      for(let tag of this.product.tags){
-
-        console.log(tag.id);
-
-        ((document.getElementsByClassName('chkTag-'+tag.id)[0]) as HTMLInputElement).checked = true;
-
-      }
-
-  }
-
   saveTag(){
     let productTags: Tags[] = [];
+    let i = 0;
 
     for(let tag of this.tagsChecked){
-      if((document.getElementsByClassName('chkTag-'+tag.id)[0] as HTMLInputElement).checked){
+      if(/*(document.getElementsByClassName('chkTag-'+tag.id)[0] as HTMLInputElement).checked*/tag){
 
-        let tagModel: Tags = {
-          id : tag.id,
-          tag_name : tag.tag_name,
-          tag_detail : tag.tag_detail
-        };
+        let tagModel: Tags = this.tagsList[i]
         
         productTags.push(tagModel);
       }
+
+      i+=1;
     }
 
     this.product.tags = productTags;
 
-    console.log(this.tagsChecked);
+
+    console.log(productTags);
 
     this.isVisibleTagsPanel = false;
     this.isVisibleProductPanel = true;
@@ -350,9 +363,10 @@ export class AddProductViewComponent {
   addTag(){
 
     this.tagService.addTag(this.newTag).subscribe({
-      next: (response: Tags)=>{
-        console.log("Tag added succesfully.");
-        console.log(response);
+      next: (response)=>{
+        
+        this.loadTags();        
+        
       },
       error: (error: Error)=>{
         console.log(error);

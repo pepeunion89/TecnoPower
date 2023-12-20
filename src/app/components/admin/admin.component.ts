@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef, MatDialogContainer } from '@angular/material/d
 import { AddProductViewComponent } from '../add-product-view/add-product-view.component';
 import { ProductsApi } from 'src/app/models/product-api';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { EditProductViewComponent } from '../edit-product-view/edit-product-view.component';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -41,12 +42,23 @@ export class AdminComponent {
   openDialog(){
     
     let dialogRef :MatDialogRef<AddProductViewComponent>;
-    dialogRef = this.dialog.open(AddProductViewComponent, { panelClass: 'custom-dialog-container'});
+    dialogRef = this.dialog.open(AddProductViewComponent, {panelClass: 'custom-dialog-container'});
     return dialogRef.afterClosed().subscribe(()=>{
       //this.cdr.detectChanges();
       this.loadList();
     });
     
+  }
+
+  openUpdateDialog(product: ProductsApi){
+
+    let dialogRef: MatDialogRef<EditProductViewComponent>;
+    let data = product; 
+    dialogRef = this.dialog.open(EditProductViewComponent, {data,  panelClass: 'custom-dialog-container'});
+    return dialogRef.afterClosed().subscribe(()=>{
+      this.loadList();
+    })
+
   }
 
   deleteProduct(product: ProductsApi){

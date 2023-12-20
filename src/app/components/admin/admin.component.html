@@ -19,7 +19,7 @@
                 <span>${{product.price | numberFormat}}</span>        
             </div>    
             <div class="editOrDelete">
-                    <img src="../../../assets/images/crud-edit.png" alt="">
+                    <img src="../../../assets/images/crud-edit.png" alt="" (click)="openUpdateDialog(product)">
                     <img src="../../../assets/images/crud-remove.png" alt="" (click)="deleteProduct(product)">
             </div>
         </div>        

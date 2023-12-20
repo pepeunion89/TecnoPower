@@ -37,10 +37,17 @@ export class ProductsServiceService {
     return this.getProductsFiltered(category).pipe(map(productsListFiltered => productsListFiltered.filter(product => product.product_name.toUpperCase().includes(productName.toUpperCase()))));
   }
 
-  public addProduct(product: ProductsApi):Observable<ProductsApi>{
+  public addProduct(product: ProductsApi):Observable<any>{
 
     //return this.http.post<ProductsApi>(`${this.apiServerUrl}/new_product`, product);
     return this.http.post<ProductsApi>(`${this.apiServerUrl}${this.apiUrl}`, product);
+
+  }
+
+  public updateProduct(product: ProductsApi):Observable<any>{
+
+    //return this.http.post<ProductsApi>(`${this.apiServerUrl}/new_product`, product);
+    return this.http.post<ProductsApi>(`${this.apiServerUrl}${this.apiUrl}${product.id}`, product);
 
   }
 

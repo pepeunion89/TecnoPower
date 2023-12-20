@@ -19,7 +19,7 @@ export class TagsServiceService {
     return this.http.get<Tags[]>(`${this.apiServerUrl}${this.apiUrl}`)
   }
   
-  public addTag(tag: Tags):Observable<Tags>{
+  public addTag(tag: Tags):Observable<any>{
     return this.http.post<Tags>(`${this.apiServerUrl}${this.apiUrl}`, tag);
   }
 

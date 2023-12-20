@@ -22,11 +22,10 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { AddProductViewComponent } from './components/add-product-view/add-product-view.component';
 import { DecimalPipe } from '@angular/common';
-import { TagsViewComponent } from './components/tags-view/tags-view.component';
-import { MakerViewComponent } from './components/maker-view/maker-view.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { EditProductViewComponent } from './components/edit-product-view/edit-product-view.component';
 
 @NgModule({
   declarations: [
@@ -42,9 +41,8 @@ import { MatButtonModule } from '@angular/material/button';
     PaymentViewComponent,
     AdminComponent,
     AddProductViewComponent,
-    TagsViewComponent,
-    MakerViewComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    EditProductViewComponent
   ],
   imports: [
     BrowserModule,

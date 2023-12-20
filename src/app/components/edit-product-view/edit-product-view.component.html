@@ -1,0 +1,43 @@
+<div class="update-product-container">
+
+    <div class="title">
+        <h1>ACTUALIZAR PRODUCTO</h1>
+    </div>
+    <form (ngSubmit)="updateProduct()">
+        <div class="nameDiv">
+            <span>Producto</span>
+            <input type="text" class="name" name="name" [(ngModel)]="productToEdit.product_name" [contentEditable]="false">
+        </div>
+        <div class="priceDiv">
+            <span class="price-span">Precio</span>
+            <input type="number" class="price" name="price" [(ngModel)]="productToEdit.price">
+            <span class="stock-span">Stock</span>
+            <input type="number" class="stock" name="stock" [(ngModel)]="productToEdit.stock">
+        </div>    
+        <div class="colorDiv">
+            <span>Colores</span>            
+            <div class="colorSelectorEnableContainer">
+                <div class="colorNameContainer">
+                    <input type="text" class="colorName colorName-{{number}}" disabled *ngFor="let number of colorNumbers"> 
+                </div>
+                <div class="colorSelectorContainer">
+                    <input type="color" class="colorHex-{{number}}" disabled *ngFor="let number of colorNumbers"> 
+                </div>     
+                <div class="colorEnableContainer">
+                    <input type="checkbox" class="enableColor-{{number}}" (click)="eodColor(number)" *ngFor="let number of colorNumbers">
+                </div>    
+            </div>   
+        </div>
+        <span class="requiredFieldsDiv">
+            <b style="color: red;">*Campos obligatorios:</b> Precio.
+        </span>
+        <div class="saveDiv">
+            <button type="button" class="cancel" (click)="exit()">Cancelar</button>
+            <button type="submit" class="save">Guardar</button>
+        </div>
+    </form>
+
+</div>
+
+
+
